@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_logout"
+        android:icon="@drawable/ic_stat_name"
+        android:title="로그아웃"/>
+
+    <item
+        android:id="@+id/menu_myInfo"
+        android:icon="@drawable/ic_stat_info"
+        android:title="내정보"/>
+
+    <item
+        android:id="@+id/menu_chat"
+        android:icon="@drawable/ic_stat_chat"
+        android:title="채팅"/>
+
+    <item
+        android:id="@+id/menu_calendar"
+        android:icon="@drawable/ic_stat_calendar"
+        android:title="일정관리"/>
+
+    <item
+        android:id="@+id/menu_event"
+        android:icon="@drawable/ic_stat_event"
+        android:title="이벤트"/>
+
+
+</menu>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#54BFEF"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mainImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="130dp"
+            android:src="@drawable/diet" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/mainText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="환영합니다!"
+        android:textColor="@color/white"
+        android:layout_below="@+id/linear2"
+        android:layout_marginTop="20dp"
+        android:textSize="27dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/mainText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘도 즐겁게 운동해요"
+        android:textColor="@color/white"
+        android:layout_below="@+id/mainText1"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/emailEdit"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/mainText3"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:hint="Email 입력"
+        android:textSize="14dp"
+        android:textColorHint="@color/white"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/passwordEdit"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:inputType="textPassword"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:hint="Password 입력"
+        android:textColorHint="@color/white"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:layout_below="@+id/emailEdit"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/passwordEdit"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/roundshape"
+        android:text="로그인"
+        android:textColor="#54BFEF"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:layout_centerInParent="true"/>
+
+
+    <Button
+        android:id="@+id/emailSearchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:text="아이디 찾기"
+        android:textColor="@color/white"
+        android:layout_below="@+id/loginBtn"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/mainText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text=" | "
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_below="@+id/loginBtn"
+        android:layout_toRightOf="@+id/emailSearchBtn"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/passSearchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:text="비밀번호 찾기"
+        android:textColor="@color/white"
+        android:layout_below="@+id/loginBtn"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/mainText2"/>
+
+    <TextView
+        android:id="@+id/mainText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text=" |"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_below="@+id/loginBtn"
+        android:layout_toRightOf="@+id/passSearchBtn"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/JoinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        android:layout_below="@+id/loginBtn"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/mainText4"/>
+
+    <TextView
+        android:id="@+id/maintext5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다른 서비스 계정으로 로그인"
+        android:layout_below="@+id/passSearchBtn"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"/>
+
+    <ImageButton
+        android:id="@+id/googleBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/maintext5"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="85dp"
+        android:src="@drawable/googlelogo"
+        android:background="#00ff0000"
+        android:scaleType="fitCenter"/>
+
+    <ImageButton
+        android:id="@+id/kakaoBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/kakaotalk"
+        android:scaleType="fitCenter"
+        android:background="#00ff0000"
+        android:layout_below="@+id/maintext5"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/googleBtn"/>
+
+    <ImageButton
+        android:id="@+id/instaBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/instagram"
+        android:scaleType="fitCenter"
+        android:background="#00ff0000"
+        android:layout_below="@+id/maintext5"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/kakaoBtn"/>
+
+    <ImageButton
+        android:id="@+id/facebookBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/facebook"
+        android:scaleType="fitCenter"
+        android:background="#00ff0000"
+        android:layout_below="@+id/maintext5"
+        android:layout_toRightOf="@+id/instaBtn"/>
+
+
+</RelativeLayout>
