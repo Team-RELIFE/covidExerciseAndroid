@@ -30,20 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this,JoinActivity1.class);
                 startActivity(intent);
                 break;
-//            case R.id.snsLoginBtn:
-//                showDialog();
-//                break;
         }
     }
 
-//    void showDialog(){
-//
-//        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this).setTitle("SNS 로그인").setPositiveButton("닫기", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//            }
-//        });
-//        AlertDialog dlg=builder.create();
-//        dlg.show();
-//    }
 }
