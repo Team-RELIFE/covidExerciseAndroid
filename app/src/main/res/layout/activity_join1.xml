@@ -113,6 +113,25 @@
             android:hint="휴대폰 번호"
             android:textColorHint="#E8E5E5"/>
 
+        <ImageView
+            android:id="@+id/JoinImage5"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_stat_name"
+            android:layout_below="@+id/JoinImage4"/>
+
+        <EditText
+            android:id="@+id/joinNameEdit"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/JoinImage5"
+            android:layout_below="@+id/joinPhoneEdit"
+            android:hint="이름"
+            android:textColorHint="#E8E5E5"/>
+
         <ImageButton
             android:id="@+id/joinNextBtn"
             android:layout_width="80dp"
@@ -123,7 +142,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
-            android:layout_below="@+id/joinPhoneEdit"/>
+            android:layout_below="@+id/joinNameEdit"/>
 
     </RelativeLayout>
 
