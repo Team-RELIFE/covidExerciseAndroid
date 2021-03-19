@@ -17,8 +17,9 @@ public class JoinActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join1);
 
-        joinNextBtn=(ImageButton)findViewById(R.id.joinNextBtn);
+        joinNextBtn=(ImageButton)findViewById(R.id.joinNextBtn); /*회원가입 다음단계로 이동*/
 
+        /*버튼 수가 적어서 switch문 안쓰고 setOnClickListener 사용*/
         joinNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
