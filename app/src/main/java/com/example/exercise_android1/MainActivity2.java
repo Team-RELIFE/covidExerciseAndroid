@@ -29,6 +29,7 @@ public class MainActivity2 extends AppCompatActivity {
     NavigationView navigationView; /*내비게이션뷰*/
     OAuthLogin mOAuthLogin;
     Context nContext;
+    private long time=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        /*소셜 로그인과 회원 로그인 분리해야 할듯? 일단 로그아웃 시에는 문제가 없음*/
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -67,9 +69,24 @@ public class MainActivity2 extends AppCompatActivity {
                     Toast.makeText(nContext,"로그아웃",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(MainActivity2.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 return false;
             }
         });
+    }
+
+    /*뒤로가기 버튼 두 번 누르면 앱 종료*/
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        /*currentTimeMills : 현재 시간 불러옴, 현재시간-사용시간 = 실행시간*/
+        if (System.currentTimeMillis()-time>=2000){
+            time=System.currentTimeMillis();
+            Toast.makeText(getApplicationContext(),"한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
+        else if (System.currentTimeMillis()-time<2000){
+            finishAffinity(); /*어느 액티비티에서든 모든 부모 액티비티 종료*/
+        }
     }
 }

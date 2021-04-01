@@ -25,8 +25,16 @@ public class JoinActivity1 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(JoinActivity1.this,JoinActivity2.class);
                 startActivity(intent);
+
             }
         });
 
+    }
+
+    /*뒤로가기 버튼 눌렀을 때 이전 페이지로 돌아간 다음 finish()호출*/
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static String OAUTH_CLIENT_ID = "WjYSmWoJvcv3eeJul6nI"; /*앱 등록 후 발급받은 클라이언트 ID*/
     private static String OAUTH_CLIENT_SECRET = "MRpB0hTtur"; /*앱 등록 후 발급받은 클라이언트 비밀번호*/
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인하기"; /*로그인 시 화면에 표시할 앱 이름*/
+    private long time=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
 
         joinBtn=(Button)findViewById(R.id.JoinBtn);
         joinBtn.setOnClickListener(this::onClick);
+    }
+
+    /*뒤로가기 버튼 두 번 누르면 앱 종료*/
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        if (System.currentTimeMillis()-time>=2000){
+            time=System.currentTimeMillis();
+            Toast.makeText(getApplicationContext(),"한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
+        else if (System.currentTimeMillis()-time<2000){
+            finishAffinity(); /*어느 액티비티에서든 모든 부모 액티비티 종료*/
+        }
     }
 
     public void onClick(View view){
@@ -71,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 String errorCode=mOAuthLoginInstance.getLastErrorCode(mContext).getCode(); /*마지막으로 실패한 로그인의 에러코드*/
                 String errorDesc=mOAuthLoginInstance.getLastErrorDesc(mContext); /*마지막으로 실패한 로그인의 에러메세지 반환*/
-                Toast.makeText(mContext,"ErrorCode:"+errorCode+", ErrorDesc:"+errorDesc,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext,"ErrorCode:"+errorCode+", ErrorDesc:"+errorDesc,Toast.LENGTH_SHORT).show();
             }
         }
     };
