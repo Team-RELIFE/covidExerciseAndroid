@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
     NavigationView navigationView; /*내비게이션뷰*/
     OAuthLogin mOAuthLogin;
     Context nContext;
+    Button ptListBtn;
     private long time=0;
 
     @Override
@@ -40,6 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
         navigationView=(NavigationView)findViewById(R.id.navi_view);
+        ptListBtn = (Button)findViewById(R.id.pt_list_Btn);
         nContext=this;
 
         /*액션바 대신 툴바 사용*/
@@ -72,6 +75,14 @@ public class MainActivity2 extends AppCompatActivity {
                     finish();
                 }
                 return false;
+            }
+        });
+
+        ptListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity2.this, SessionActivity.class);
+                startActivity(intent);
             }
         });
     }
