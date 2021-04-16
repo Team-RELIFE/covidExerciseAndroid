@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private static String OAUTH_CLIENT_NAME = "네이버 아이디로 로그인하기"; /*로그인 시 화면에 표시할 앱 이름*/
     private long time=0;
 
+
+    /* 주석 */
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
