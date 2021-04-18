@@ -22,7 +22,7 @@ public class JoinActivity2 extends AppCompatActivity {
         cmEdit=(EditText)findViewById(R.id.cmEditText);
         kgEdit=(EditText)findViewById(R.id.kgEditText);
 
-        /*,*/
+        /**/
         /*jsp와 연동하여 db에 회원정보 저장하는 알고리즘 필요*/
         /*회원가입 성공 토스트메세지 필요*/
         /*위 과정 완료 후 joinokBtn 누르면 MainActivity2로 이동*/
