@@ -75,6 +75,10 @@ public class MainActivity2 extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                if(id==R.id.menu_calendar){
+                    Intent intent=new Intent(MainActivity2.this,CalendarActivity.class);
+                    startActivity(intent);
+                }
                 return false;
             }
         });

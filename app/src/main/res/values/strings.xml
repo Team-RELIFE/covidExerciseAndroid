@@ -8,7 +8,7 @@
     <string name="openvidu_url">OPENVIDU URL</string>
     <string name="openvidu_secret">OPENVIDU SECRET</string>
 
-     <!--    openvidu_url => https://DOMAIN_OR_PUBLIC_IP:4443/-->
+    <!--    openvidu_url => https://DOMAIN_OR_PUBLIC_IP:4443/-->
     <string name="default_openvidu_url">https://192.168.219.102:4443/</string>
     <string name="default_openvidu_secret">MY_SECRET</string>
     <string name="hang_up">Leave session</string>

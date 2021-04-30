@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +28,13 @@
         <activity android:name=".MainActivity2" />
         <activity android:name=".JoinActivity2" />
         <activity android:name=".JoinActivity1" />
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name="SessionActivity"
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".SessionActivity"
             android:label="OpenVidu Android">
             <intent-filter>
-                <!--                <action android:name="android.intent.action.MAIN" />-->
+
+                <!-- <action android:name="android.intent.action.MAIN" /> -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -41,7 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
