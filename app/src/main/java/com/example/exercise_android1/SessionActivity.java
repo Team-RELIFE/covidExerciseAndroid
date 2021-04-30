@@ -42,15 +42,6 @@ import com.example.exercise_android1.openvidu.Session;
 import com.example.exercise_android1.utils.CustomHttpClient;
 import com.example.exercise_android1.websocket.CustomWebSocket;
 
-
-//import io.openvidu.openvidu_android.R;
-//import io.openvidu.openvidu_android.fragments.PermissionsDialogFragment;
-//import io.openvidu.openvidu_android.openvidu.LocalParticipant;
-//import io.openvidu.openvidu_android.openvidu.RemoteParticipant;
-//import io.openvidu.openvidu_android.openvidu.Session;
-//import io.openvidu.openvidu_android.utils.CustomHttpClient;
-//import io.openvidu.openvidu_android.websocket.CustomWebSocket;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;

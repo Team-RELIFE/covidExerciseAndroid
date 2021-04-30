@@ -32,7 +32,12 @@
         <activity android:name="SessionActivity"
             android:label="OpenVidu Android">
             <intent-filter>
-<!--                <action android:name="android.intent.action.MAIN" />-->
+                <!--                <action android:name="android.intent.action.MAIN" />-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".trainer_list.TrainerList">
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

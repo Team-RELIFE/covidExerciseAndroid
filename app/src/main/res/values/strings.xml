@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercise_android1</string>
+    <string name="app_name">Exercise_android2</string>
     <string name="start_button">Join</string>
     <string name="session_name">Session Name</string>
     <string name="default_session_name">SessionA</string>
@@ -7,7 +7,9 @@
     <string name="default_participant_name">Participant</string>
     <string name="openvidu_url">OPENVIDU URL</string>
     <string name="openvidu_secret">OPENVIDU SECRET</string>
-    <string name="default_openvidu_url">your_ip</string>
+
+     <!--    openvidu_url => https://DOMAIN_OR_PUBLIC_IP:4443/-->
+    <string name="default_openvidu_url">https://192.168.219.102:4443/</string>
     <string name="default_openvidu_secret">MY_SECRET</string>
     <string name="hang_up">Leave session</string>
     <string name="no_connection">COULD NOT ESTABLISH THE CONNECTION, TRY AGAIN </string>

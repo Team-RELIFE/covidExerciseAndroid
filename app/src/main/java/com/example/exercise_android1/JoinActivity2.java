@@ -51,22 +51,23 @@ public class JoinActivity2 extends AppCompatActivity {
                 String kg=kgEdit.getText().toString().trim();
                 Intent intent=new Intent(JoinActivity2.this,MainActivity2.class);
 
-                if(pw.equals(pw_chk))
-                {
-                    Toast.makeText(getApplicationContext(), "회원가입에 성공하였습니다.", Toast.LENGTH_LONG).show();
-                    try {
-                        String result;
-                        CustomTask task = new CustomTask();
-                        result = task.execute(id, pw, phone, name, cm, kg).get();
-                        Log.i("리턴 값",result);
-                    } catch (Exception e) {
-
-                    }
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "비밀번호가 서로 일치하지 않습니다.", Toast.LENGTH_LONG).show();
-                    intent=new Intent(JoinActivity2.this,JoinActivity1.class);
-                }
+                //TODO : Null point 오류나서 주석처리(바로 메인2로 이동)
+//                if(pw.equals(pw_chk))
+//                {
+//                    Toast.makeText(getApplicationContext(), "회원가입에 성공하였습니다.", Toast.LENGTH_LONG).show();
+//                    try {
+//                        String result;
+//                        CustomTask task = new CustomTask();
+//                        result = task.execute(id, pw, phone, name, cm, kg).get();
+//                        Log.i("리턴 값",result);
+//                    } catch (Exception e) {
+//
+//                    }
+//                }
+//                else{
+//                    Toast.makeText(getApplicationContext(), "비밀번호가 서로 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+//                    intent=new Intent(JoinActivity2.this,JoinActivity1.class);
+//                }
 
                 startActivity(intent);
             }

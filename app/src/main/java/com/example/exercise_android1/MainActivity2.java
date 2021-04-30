@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.exercise_android1.trainer_list.TrainerList;
 import com.google.android.material.navigation.NavigationView;
 import com.nhn.android.naverlogin.OAuthLogin;
 
@@ -81,7 +82,8 @@ public class MainActivity2 extends AppCompatActivity {
         ptListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity2.this, SessionActivity.class);
+//                Intent intent=new Intent(MainActivity2.this, SessionActivity.class);
+                Intent intent=new Intent(MainActivity2.this, TrainerList.class);
                 startActivity(intent);
             }
         });
