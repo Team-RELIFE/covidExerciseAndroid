@@ -9,7 +9,7 @@
     <string name="openvidu_secret">OPENVIDU SECRET</string>
 
     <!--    openvidu_url => https://DOMAIN_OR_PUBLIC_IP:4443/-->
-    <string name="default_openvidu_url">https://192.168.219.102:4443/</string>
+    <string name="default_openvidu_url">server_ip</string>
     <string name="default_openvidu_secret">MY_SECRET</string>
     <string name="hang_up">Leave session</string>
     <string name="no_connection">COULD NOT ESTABLISH THE CONNECTION, TRY AGAIN </string>
@@ -18,4 +18,5 @@
     <string name="accept_permissions_dialog">GIVE PERMISSIONS!</string>
     <string name="cancel_dialog">CANCEL</string>
     <string name="no_internet_connection">NO INTERNET CONNECTION, PLEASE CHECK YOUR CONNECTION</string>
+    <string name="db_server">db_server_ip</string>
 </resources>
