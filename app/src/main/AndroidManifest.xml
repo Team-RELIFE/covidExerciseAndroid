@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        
+
         <activity android:name=".pt.PtActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" android:screenOrientation="portrait">
             <intent-filter>
