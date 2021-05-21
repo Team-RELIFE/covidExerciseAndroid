@@ -34,7 +34,7 @@
             </androidx.appcompat.widget.Toolbar>
 
             <TextView
-                android:id="@+id/userinform"
+                android:id="@+id/userinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/toolbar"
@@ -43,6 +43,56 @@
                 android:text="회원 정보 수정"
                 android:textSize="25dp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/JoinImage2"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/userinfo"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_stat_lock" />
+
+            <EditText
+                android:id="@+id/joinPassEdit1"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userinfo"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/JoinImage2"
+                android:hint="비밀번호"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/JoinImage3"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/JoinImage2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_stat_lock" />
+
+            <EditText
+                android:id="@+id/joinPassEdit2"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/joinPassEdit1"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/JoinImage3"
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/joinPassEdit2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="#00FF0000"
+                android:text="회원탈퇴"
+                android:textColor="#c0c0c0" />
+
 
         </RelativeLayout>
     </ScrollView>

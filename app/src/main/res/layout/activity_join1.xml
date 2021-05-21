@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#54BFEF"
     tools:context=".JoinActivity1">
 
     <TextView
-        android:id="@+id/joinText1"
+        android:id="@+id/JoinMainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JOIN"
-        android:textColor="@color/white"
+        android:textSize="30dp"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
-        android:textSize="40dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,30 +26,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1. 기본정보 입력"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="17dp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"/>
 
+        <ImageButton
+            android:id="@+id/galleryBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/photo2"
+            android:layout_below="@+id/joinText4"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:background="#00ff0000"
+            />
+
+        <EditText
+            android:id="@+id/nickname"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/galleryBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-14dp"
+            android:gravity="center"
+            android:hint="닉네임"
+            android:textSize="17dp" />
+
         <ImageView
             android:id="@+id/JoinImage1"
             android:layout_width="30dp"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
-            android:layout_below="@+id/joinText4"
-            android:src="@drawable/ic_stat_name"/>
+            android:layout_below="@+id/nickname"
+            android:src="@drawable/ic_stat_name"
+            />
 
         <EditText
             android:id="@+id/joinIdEdit"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/joinText4"
-            android:layout_marginTop="30dp"
+            android:layout_below="@+id/nickname"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/JoinImage1"
-            android:hint="이메일"
-            android:textColorHint="#E8E5E5" />
+            android:hint="이메일" />
 
         <ImageView
             android:id="@+id/JoinImage2"
@@ -71,8 +90,7 @@
             android:layout_below="@+id/joinIdEdit"
             android:inputType="textPassword"
             android:layout_marginTop="15dp"
-            android:hint="비밀번호"
-            android:textColorHint="#E8E5E5"/>
+            android:hint="비밀번호"/>
 
         <ImageView
             android:id="@+id/JoinImage3"
@@ -91,8 +109,7 @@
             android:layout_marginTop="15dp"
             android:inputType="textPassword"
             android:layout_below="@+id/joinPassEdit1"
-            android:hint="비밀번호 확인"
-            android:textColorHint="#E8E5E5"/>
+            android:hint="비밀번호 확인"/>
 
         <ImageView
             android:id="@+id/JoinImage4"
@@ -110,8 +127,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/JoinImage4"
             android:layout_below="@+id/joinPassEdit2"
-            android:hint="휴대폰 번호"
-            android:textColorHint="#E8E5E5"/>
+            android:hint="휴대폰 번호"/>
 
         <ImageView
             android:id="@+id/JoinImage5"
@@ -129,8 +145,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/JoinImage5"
             android:layout_below="@+id/joinPhoneEdit"
-            android:hint="이름"
-            android:textColorHint="#E8E5E5"/>
+            android:hint="이름"/>
 
         <ImageButton
             android:id="@+id/joinNextBtn"

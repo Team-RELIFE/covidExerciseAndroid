@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#54BFEF"
     tools:context=".JoinActivity2">
 
     <TextView
-        android:id="@+id/joinText1"
+        android:id="@+id/JoinMainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JOIN"
-        android:textColor="@color/white"
+        android:textSize="30dp"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
-        android:textSize="40dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/joinText2"
@@ -25,9 +22,9 @@
         android:layout_height="wrap_content"
         android:text="2. 신체정보 입력"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="17dp"
-        android:layout_below="@+id/joinText1"
+        android:layout_below="@+id/JoinMainText"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"/>
 
@@ -44,7 +41,7 @@
         android:text="cm"
         android:layout_below="@+id/joinText2"
         android:layout_toRightOf="@+id/cmEditText"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
 
@@ -61,7 +58,7 @@
         android:text="kg"
         android:layout_below="@+id/cmEditText"
         android:layout_toRightOf="@+id/kgEditText"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
 

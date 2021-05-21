@@ -4,101 +4,143 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
+        android:id="@+id/scrollview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#54BFEF">
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#54BFEF">
+
+                <ImageButton
+                    android:id="@+id/menuIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:src="@drawable/ic_stat_menu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="확 찐자 운동관리"
+                    android:textColor="@color/white" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <ImageButton
-                android:id="@+id/menuIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/galleryBtn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
                 android:background="#00ff0000"
-                android:src="@drawable/ic_stat_menu" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/photo2" />
+
+            <EditText
+                android:id="@+id/nickname"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/galleryBtn"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="닉네임"
+                android:hint="닉네임을 입력하세요."
+                android:textSize="17dp"
+                android:scaleType="fitCenter"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/galleryBtn"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/nickname"
+                android:background="#FFFFFF"
+                android:src="@android:drawable/ic_menu_edit" />
 
             <TextView
+                android:id="@+id/userEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="확 찐자 운동관리"
-                android:textColor="@color/white" />
+                android:layout_below="@+id/nickname"
+                android:layout_centerHorizontal="true"
+                android:text="capstone@cbnu.ac.kr"
+                android:textSize="18dp"
+                android:scaleType="fitCenter"
+                android:textStyle="bold"/>
+            //사용자가 가입한 이메일이 뜨도록
 
-        </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/point"
+                android:layout_width="400dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/userEmail"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/point_round"
+                android:text="  포인트 내역"
+                android:gravity="clip_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/galleryBtn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_below="@id/toolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/photo2" />
+            <TextView
+                android:id="@+id/timeTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/point"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="예약된 수업 목록"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="320dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:scrollbars="none"
+                android:background="@drawable/border"
+                android:layout_below="@+id/timeTable"/>
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/galleryBtn"
-            android:layout_centerHorizontal="true"
-            android:text="사용자이름"
-            android:textSize="17dp"
-            android:scaleType="fitCenter"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/galleryBtn"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="-3dp"
-            android:layout_toRightOf="@+id/username"
-            android:background="#FFFFFF"
-            android:src="@android:drawable/ic_menu_edit" />
-
-        <TextView
-            android:id="@+id/userEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/username"
-            android:layout_centerHorizontal="true"
-            android:text="capstone@cbnu.ac.kr"
-            android:textSize="18dp"
-            android:layout_marginTop="3dp"
-            android:scaleType="fitCenter"
-            android:textStyle="bold"/>
-        //사용자가 가입한 이메일이 뜨도록
-
-        <TextView
-            android:id="@+id/timeTable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/userEmail"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="예약된 수업 목록"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="나의 수강내역"
-            android:layout_below="@+id/timeTable"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:textSize="15dp"
-            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나의 수강내역"
+                android:layout_below="@+id/listView1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+            <ListView
+                android:id="@+id/listView2"
+                android:layout_width="320dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:scrollbars="none"
+                android:background="@drawable/border"
+                android:layout_below="@+id/textView2"/>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
