@@ -81,7 +81,7 @@ public class JoinActivity2 extends AppCompatActivity {
             try {
                 String str;
                 //TODO : //보낼 jsp 주소를 ""안에 작성합니다. //ip주소는 본인 걸로
-                URL url = new URL("ip_address/Model2-Board/userJoin.jsp");
+                URL url = new URL("192.168.55.141/Model2-Board/userJoin.jsp");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.

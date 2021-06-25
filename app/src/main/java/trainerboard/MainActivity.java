@@ -1,3 +1,4 @@
+/*
 package trainerboard;
 
 import androidx.annotation.NonNull;
@@ -82,4 +83,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-}
+}*/
