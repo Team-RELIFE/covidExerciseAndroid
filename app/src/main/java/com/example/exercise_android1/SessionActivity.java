@@ -72,6 +72,7 @@ public class SessionActivity extends AppCompatActivity {
     TextView main_participant;
     @BindView(R.id.peer_container)
     FrameLayout peer_container;
+    /*minji_user*/
 
     private String OPENVIDU_URL;
     private String OPENVIDU_SECRET;
