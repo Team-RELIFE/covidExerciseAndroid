@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -34,6 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
     Button ptListBtn;
     private long time=0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +44,29 @@ public class MainActivity2 extends AppCompatActivity {
         menuIcon=(ImageButton)findViewById(R.id.menuIcon);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
+
         navigationView=(NavigationView)findViewById(R.id.navi_view);
+        
         ptListBtn = (Button)findViewById(R.id.pt_list_Btn);
         nContext=this;
-
+        
+        
         /*액션바 대신 툴바 사용*/
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false); /*앱 타이틀 안보이게*/
         //getActionBar사용시 오류//
+
+
+        //drawer header :: 로그인한 상태라면 유저 이름을 표시, 아니라면(게스트 로그인) "Guest"로 표시
+        View drawerHeader = navigationView.getHeaderView(0);
+        TextView header_userName = (TextView) drawerHeader.findViewById(R.id.nameTV);
+        User currentUser = new User().getCurrentUser();
+        if (currentUser.id != null) {
+            header_userName.setText(currentUser.id+" 님");
+        }
+        else {
+            header_userName.setText("Guest 님");
+        }
 
         /*메뉴버튼 눌렀을 때 내비게이션 드로어 오픈*/
         menuIcon.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +75,7 @@ public class MainActivity2 extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
+        
         /*소셜 로그인과 회원 로그인 분리해야 할듯? 일단 로그아웃 시에는 문제가 없음*/
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

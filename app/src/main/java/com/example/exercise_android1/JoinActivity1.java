@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class JoinActivity1 extends AppCompatActivity {
 
@@ -32,15 +33,38 @@ public class JoinActivity1 extends AppCompatActivity {
         joinNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 /*editText로부터 입력받은 각 항목들을 string형태로 변환*/
                 String id=idEdit.getText().toString().trim();
                 String pw=pwEdit.getText().toString().trim();
-                String pwOk=pwOkEdit.getText().toString().trim();
+                String pw_chk=pwOkEdit.getText().toString().trim();
                 String name=nameEdit.getText().toString().trim();
                 String phone=phoneEdit.getText().toString().trim();
-                Intent intent=new Intent(JoinActivity1.this,JoinActivity2.class);
-                startActivity(intent);
 
+                // 모든 정보 입력 여부 체크
+                //TODO : 글자수 체크, 기본키(아이디) 존재 여부 체크
+                if(id.length()==0 || pw.length()==0 || name.length()==0 || phone.length()==0) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                // 비밀번호 체크
+                else if (!pw.contentEquals(pw_chk)) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else {
+                    Intent intent=new Intent(JoinActivity1.this,JoinActivity2.class);
+
+                    intent.putExtra("id", id);
+                    intent.putExtra("pw", pw);
+                    intent.putExtra("pw_chk", pw_chk);
+                    intent.putExtra("name", name);
+                    intent.putExtra("phone", phone);
+
+                    startActivity(intent);
+                }
             }
         });
 
