@@ -1,76 +1,84 @@
 package com.example.exercise_android1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class JoinActivity2 extends AppCompatActivity {
+public class DBTest2 extends AppCompatActivity implements View.OnClickListener {
 
-    private final String TAG = "JoinActivity2";
-    ImageButton joinOkBtn; /*회원가입 완료 버튼*/
-    EditText cmEdit,kgEdit; /*키와 체중을 입력받을 EditText(activity_join2)*/
-    String id, pw, pw_chk, phone, name;
-    double height = 0, weight = 0;
+    private final String TAG = "dbtest2";
+
+    Button btn ;
+    TextView tv;
+    EditText userid_et,name_et,age_et;
+    String userid = "", name = "", age = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join2);
-        Intent intent = getIntent();
+        setContentView(R.layout.activity_dbtest2);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-        id = intent.getStringExtra("id");
-        pw = intent.getStringExtra("pw");
-        pw_chk = intent.getStringExtra("pw_chk");
-        phone = intent.getStringExtra("phone");
-        name = intent.getStringExtra("name");
-        joinOkBtn=(ImageButton)findViewById(R.id.JoinOkBtn);
-        cmEdit=(EditText)findViewById(R.id.cmEditText);
-        kgEdit=(EditText)findViewById(R.id.kgEditText);
+        btn = (Button) findViewById(R.id.start_button); //데이터베이스 접속 버튼
+        btn.setOnClickListener(this);
 
-        /**/
-        /*jsp와 연동하여 db에 회원정보 저장하는 알고리즘 필요*/
-        /*회원가입 성공 토스트메세지 필요*/
-        /*위 과정 완료 후 joinokBtn 누르면 MainActivity2로 이동*/
-        joinOkBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String cm=cmEdit.getText().toString().trim();
-                String kg=kgEdit.getText().toString().trim();
+        tv = (TextView) findViewById(R.id.resulttv); //검색 결과 텍스트뷰
 
-                if (!cm.isEmpty()) {
-                    height = Double.parseDouble(cm);
-                    weight = Double.parseDouble(kg);
+        userid_et = (EditText) findViewById(R.id.userid_et); //userid 입력칸
+        name_et = (EditText) findViewById(R.id.name_et); //name 입력칸
+        age_et = (EditText) findViewById(R.id.age_et); //name 입력칸
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch(view.getId()){
+            case R.id.start_button:
+                userid = userid_et.getText().toString();
+                name = name_et.getText().toString();
+                age = age_et.getText().toString();
+
+                //빈 칸이 있을 경우 토스트 메시지 출력
+                if(userid.length()<=1 || name.length()<=1){
+                    Toast toast = Toast.makeText(DBTest2.this, "데이터를 입력하세요", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else
+                {
+                    ConnectServer();
                 }
 
-                Intent intent=new Intent(JoinActivity2.this,MainActivity2.class);
-
-                ConnectServer();
-                startActivity(intent);
-            }
-        });
+                break;
+            default:
+                break;
+        }
     }
+
 
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = "http://192.168.219.102:8080/signup2.jsp";
-        final String urlSuffix = "?id=" + id + "&pw=" + pw + "&phone=" + phone + "&name=" + name + "&height=" + height + "&weight=" + weight;
+        final String SIGNIN_URL = "http://192.168.219.105:8080/signup.jsp";
+        final String urlSuffix = "?userid=" + userid + "&name=" + name + "&age=" + age;
         //Log.d("urlSuffix", urlSuffix);
 
         class SignupUser extends AsyncTask<String, Void, String> {
@@ -90,11 +98,11 @@ public class JoinActivity2 extends AppCompatActivity {
 
                     try{
                         if (!s.contains("success")) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "입력한 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(DBTest2.this, "입력한 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT);
                             toast.show();
                         }
                         else {
-                            Toast toast = Toast.makeText(getApplicationContext(), "가입이 완료되었습니다.", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(DBTest2.this, "가입이 완료되었습니다.", Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     }catch(Exception e) {
@@ -102,7 +110,7 @@ public class JoinActivity2 extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DBTest2.this, "서버와의 통신에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -124,7 +132,7 @@ public class JoinActivity2 extends AppCompatActivity {
 
 
                     //strParams에 데이터를 담아 서버로 보냄
-                    String strParams = "id=" + id + "&pw=" + pw + "&phone=" + phone + "&name=" + name + "&height=" + height + "&weight=" + weight;;
+                    String strParams = "userid=" + userid + "&name=" + name + "&age=" + age;
 
                     OutputStream os = conn.getOutputStream();
                     os.write(strParams.getBytes("UTF-8"));
@@ -160,11 +168,5 @@ public class JoinActivity2 extends AppCompatActivity {
         SignupUser su = new SignupUser();
         su.execute(urlSuffix);
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
 }
+

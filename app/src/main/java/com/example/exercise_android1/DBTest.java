@@ -80,7 +80,7 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = "192.168.55.141:8080/db_conn/connection_test.jsp";
+        final String SIGNIN_URL = "http://192.168.219.105:8080/connection_test.jsp";
         final String urlSuffix = "?userid=" + userid + "&name=" + name;
         //Log.d("urlSuffix", urlSuffix);
 
@@ -186,4 +186,3 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
         su.execute(urlSuffix);
     }
 }
-
