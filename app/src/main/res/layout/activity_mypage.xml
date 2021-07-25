@@ -34,6 +34,20 @@
                     android:textColor="@color/white" />
 
             </androidx.appcompat.widget.Toolbar>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/pwsetting"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
+                app:srcCompat="@drawable/ic_stat_info" />
 
             <ImageButton
                 android:id="@+id/galleryBtn"
@@ -58,17 +72,6 @@
                 android:textSize="17dp"
                 android:scaleType="fitCenter"
                 android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/galleryBtn"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/nickname"
-                android:background="#FFFFFF"
-                android:src="@android:drawable/ic_menu_edit" />
 
             <TextView
                 android:id="@+id/userEmail"
@@ -137,6 +140,17 @@
                 android:scrollbars="none"
                 android:background="@drawable/border"
                 android:layout_below="@+id/textView2"/>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/listView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="#00FF0000"
+                android:text="회원탈퇴"
+                android:textColor="#c0c0c0" />
+
 
 
         </RelativeLayout>

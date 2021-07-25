@@ -52,6 +52,7 @@ dependencies {
     implementation 'org.webrtc:google-webrtc:1.0.32006'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'dev.dworks.libs:volleyplus:+'
 
     // CacheWebView Library
     implementation 'ren.yale.android:cachewebviewlib:2.1.8'
