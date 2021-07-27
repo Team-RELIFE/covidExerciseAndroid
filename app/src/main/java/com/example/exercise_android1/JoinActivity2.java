@@ -19,6 +19,9 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class JoinActivity2 extends AppCompatActivity {
 
@@ -69,7 +72,7 @@ public class JoinActivity2 extends AppCompatActivity {
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = "http://192.168.219.102:8080/signup2.jsp";
+        final String SIGNIN_URL = getString(R.string.db_server)+"signup2.jsp";
         final String urlSuffix = "?id=" + id + "&pw=" + pw + "&phone=" + phone + "&name=" + name + "&height=" + height + "&weight=" + weight;
         //Log.d("urlSuffix", urlSuffix);
 
@@ -124,7 +127,7 @@ public class JoinActivity2 extends AppCompatActivity {
 
 
                     //strParams에 데이터를 담아 서버로 보냄
-                    String strParams = "id=" + id + "&pw=" + pw + "&phone=" + phone + "&name=" + name + "&height=" + height + "&weight=" + weight;;
+                    String strParams = "id=" + id + "&pw=" + pw + "&phone=" + phone + "&name=" + name + "&height=" + height + "&weight=" + weight;
 
                     OutputStream os = conn.getOutputStream();
                     os.write(strParams.getBytes("UTF-8"));

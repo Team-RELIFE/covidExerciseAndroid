@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.exercise_android1.trainer_list.TrainerList;
 import com.google.android.material.navigation.NavigationView;
 import com.nhn.android.naverlogin.OAuthLogin;
+
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -61,8 +63,9 @@ public class MainActivity2 extends AppCompatActivity {
         View drawerHeader = navigationView.getHeaderView(0);
         TextView header_userName = (TextView) drawerHeader.findViewById(R.id.nameTV);
         User currentUser = new User().getCurrentUser();
+
         if (currentUser.id != null) {
-            header_userName.setText(currentUser.id+" 님");
+            header_userName.setText(currentUser.name+" 님");
         }
         else {
             header_userName.setText("Guest 님");
@@ -87,6 +90,7 @@ public class MainActivity2 extends AppCompatActivity {
                 if (id==R.id.main_logout){
                     mOAuthLogin=OAuthLogin.getInstance();
                     mOAuthLogin.logout(nContext);
+                    currentUser.setCurrentUser(null, "", "", 0, 0, 0);
                     Toast.makeText(nContext,"로그아웃",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(MainActivity2.this,MainActivity.class);
                     startActivity(intent);
@@ -94,6 +98,11 @@ public class MainActivity2 extends AppCompatActivity {
                 }
                 if(id==R.id.menu_calendar){
                     Intent intent=new Intent(MainActivity2.this,CalendarActivity.class);
+                    startActivity(intent);
+                }
+
+                if(id==R.id.menu_health_record){
+                    Intent intent=new Intent(MainActivity2.this,HealthRecordActivity.class);
                     startActivity(intent);
                 }
                 return false;

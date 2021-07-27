@@ -1,5 +1,8 @@
 package com.example.exercise_android1;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,30 +15,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Date;
 
-public class DBTest extends AppCompatActivity implements View.OnClickListener {
+public class HealthRecordActivity extends AppCompatActivity {
 
-    private final String TAG = "MainActivity";
+    private final String TAG = "HealthRecordActivity";
 
-    Button btn ;
-    TextView tv;
-    EditText userid_et,name_et;
-    String name = "", age = "";
-
+    TextView record_list;
+    TextView mainText;
     User currentUser = new User().getCurrentUser();
 
     String userid = "";
@@ -43,40 +41,19 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dbtest);
+        setContentView(R.layout.health_record);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        mainText = (TextView) findViewById(R.id.mainText);
+        record_list = (TextView) findViewById(R.id.record_list); //검색 결과 텍스트뷰
 
-        btn = (Button) findViewById(R.id.start_button); //데이터베이스 접속 버튼
-        btn.setOnClickListener(this);
-
-        tv = (TextView) findViewById(R.id.resulttv); //검색 결과 텍스트뷰
-
-        userid_et = (EditText) findViewById(R.id.userid_et); //userid 입력칸
-        name_et = (EditText) findViewById(R.id.name_et); //name 입력칸
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        switch(view.getId()){
-            case R.id.start_button:
-                userid = userid_et.getText().toString();
-
-                //빈 칸이 있을 경우 토스트 메시지 출력
-                if(userid.length()<=1){
-                    Toast toast = Toast.makeText(DBTest.this, "데이터를 입력하세요", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else
-                {
-                    ConnectServer();
-                }
-
-                break;
-            default:
-                break;
+        if (currentUser.id != null) {
+            userid = currentUser.id;
+            mainText.setText(currentUser.name+"님의 기록");
+            ConnectServer();
+        }
+        else {
+            mainText.setText("로그인이 필요한 서비스입니다.");
         }
     }
 
@@ -84,11 +61,11 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = "http://192.168.219.105:8080/bmiRecord.jsp";
+        final String SIGNIN_URL = getString(R.string.db_server)+"bmiRecord.jsp";
         final String urlSuffix = "?id=" + userid;
         //Log.d("urlSuffix", urlSuffix);
 
-        class SignupUser extends AsyncTask<String, Void, String> {
+        class SearchHealthRecord extends AsyncTask<String, Void, String> {
 
             //스레드 관련 및 ui와의 통신을 위한 함수들이 구현되어 있음
 
@@ -107,8 +84,7 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
 
                     try{
                         if (s.length() <= 2) { //검색된 값이 없음
-                            Toast toast = Toast.makeText(DBTest.this, "검색된 값이 없습니다.", Toast.LENGTH_SHORT);
-                            toast.show();
+                            Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             JSONArray jArr = new JSONArray(s);;
@@ -125,7 +101,7 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
                                 Double bmi = json.getDouble("bmi");
                                 String date = json.getString("date");
 
-                                tv.append(userid + "\n" + height + "\n" + weight + "\n" + bmi);
+                                record_list.append("날짜 : "+ date + "\n신장 : " + height + "\n체중 : " + weight + "\nBMI : " + bmi + "\n\n");
                             }
                         }
                     }catch(Exception e) {
@@ -133,7 +109,7 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
                     }
                 }
                 else {
-                    Toast.makeText(DBTest.this, "서버와의 통신에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -188,7 +164,7 @@ public class DBTest extends AppCompatActivity implements View.OnClickListener {
             }
         }
 
-        SignupUser su = new SignupUser();
-        su.execute(urlSuffix);
+        SearchHealthRecord shr = new SearchHealthRecord();
+        shr.execute(urlSuffix);
     }
 }

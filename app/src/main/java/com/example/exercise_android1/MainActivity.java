@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login(String id, String pw) {
             //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-            final String SIGNIN_URL = "http://192.168.219.102:8080/login.jsp";
+            final String SIGNIN_URL = getString(R.string.db_server)+"login.jsp";
             final String urlSuffix = "?id=" + id;
             //Log.d("urlSuffix", urlSuffix);
 
