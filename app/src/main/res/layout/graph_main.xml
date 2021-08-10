@@ -45,7 +45,7 @@
                     android:background="#00ff0000"
                     android:layout_gravity="right" />
             </LinearLayout>
-            <com.github.mikephil.charting.charts.LineChart
+            <com.jjoe64.graphview.GraphView
                 android:layout_width="match_parent"
                 android:layout_height="800px"
                 android:id="@+id/chart" />
