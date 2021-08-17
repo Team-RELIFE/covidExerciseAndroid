@@ -34,6 +34,7 @@
                     android:textColor="@color/white" />
 
             </androidx.appcompat.widget.Toolbar>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -42,12 +43,12 @@
             <ImageView
                 android:id="@+id/pwsetting"
                 android:layout_width="30dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@id/toolbar"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="20dp"
-                app:srcCompat="@drawable/ic_stat_info" />
+                app:srcCompat="@drawable/settings" />
 
             <ImageButton
                 android:id="@+id/galleryBtn"
@@ -67,10 +68,10 @@
                 android:layout_below="@+id/galleryBtn"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="닉네임"
                 android:hint="닉네임을 입력하세요."
-                android:textSize="17dp"
                 android:scaleType="fitCenter"
+                android:text="닉네임"
+                android:textSize="17dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -79,67 +80,101 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nickname"
                 android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter"
                 android:text="capstone@cbnu.ac.kr"
                 android:textSize="18dp"
-                android:scaleType="fitCenter"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
             //사용자가 가입한 이메일이 뜨도록
 
-            <TextView
-                android:id="@+id/point"
+            //포인트 전체 레이아웃 수정
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/pointlayout"
                 android:layout_width="400dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/userEmail"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/point_round"
-                android:text="  포인트 내역"
-                android:gravity="clip_horizontal"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:gravity="clip_horizontal">
+
+                <TextView
+                    android:id="@+id/pointText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/userpoint"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:text="보유 포인트"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/pointText"/>
+
+                <TextView
+                    android:id="@+id/point"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/userpoint"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:text="누적 포인트"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
 
             <TextView
                 android:id="@+id/timeTable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/point"
+                android:layout_below="@+id/pointlayout"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="예약된 수업 목록"
                 android:textSize="15dp"
                 android:textStyle="bold" />
+
             <ListView
                 android:id="@+id/listView1"
                 android:layout_width="320dp"
                 android:layout_height="140dp"
+                android:layout_below="@+id/timeTable"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:scrollbars="none"
                 android:background="@drawable/border"
-                android:layout_below="@+id/timeTable"/>
+                android:scrollbars="none" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나의 수강내역"
                 android:layout_below="@+id/listView1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:text="나의 수강내역"
                 android:textSize="15dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <ListView
                 android:id="@+id/listView2"
                 android:layout_width="320dp"
                 android:layout_height="140dp"
+                android:layout_below="@+id/textView2"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:scrollbars="none"
                 android:background="@drawable/border"
-                android:layout_below="@+id/textView2"/>
+                android:scrollbars="none" />
+
             <Button
                 android:id="@+id/button"
                 android:layout_width="60dp"
@@ -150,7 +185,6 @@
                 android:background="#00FF0000"
                 android:text="회원탈퇴"
                 android:textColor="#c0c0c0" />
-
 
 
         </RelativeLayout>
