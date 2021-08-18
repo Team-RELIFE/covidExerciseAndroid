@@ -56,6 +56,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'dev.dworks.libs:volleyplus:+'
 
+    implementation "androidx.room:room-runtime:2.3.0"
+    annotationProcessor "androidx.room:room-compiler:2.3.0"
+
     // CacheWebView Library
     implementation 'ren.yale.android:cachewebviewlib:2.1.8'
 
