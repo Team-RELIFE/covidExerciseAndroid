@@ -4,9 +4,11 @@ package com.example.exercise_android1.graph;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import android.widget.Toast;
 
+import com.example.exercise_android1.DBHelper;
 import com.example.exercise_android1.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -43,7 +46,7 @@ import java.util.Locale;
 
 
 public class graph extends AppCompatActivity {
-    int _year, _month, _day;
+
     public CalendarView calendarView;
     float f;
     String value;
@@ -52,12 +55,17 @@ public class graph extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd");
     Button button;
     Date date;
-
+    graphDBHelper graphdbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.graph_main);
+
+        graphdbHelper = new graphDBHelper(this);
+        graphView = (GraphView) findViewById(R.id.chart);
+        series = new LineGraphSeries<DataPoint>();
+        graphView.addSeries(series);
 
         button = (Button) findViewById(R.id.button);
         /** 그래프 좌측상단 버튼 클릭시 데이터 입력 및 그래프에 추가 (미작동, 임시코드) **/
@@ -102,9 +110,15 @@ public class graph extends AppCompatActivity {
 
                 dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+
+                        ContentValues addRowValue = new ContentValues();
+
                         String inputValue = etEdit.getText().toString();
                         value = inputValue;
                         f = Float.parseFloat(value);
+
+                        graphdbHelper.insertData(date, f);
+
                         series.appendData(new DataPoint(date, f), true, 500);
                         graphView.addSeries(series);
                     }
@@ -118,9 +132,21 @@ public class graph extends AppCompatActivity {
                 dialog.show();
             }
         });
-        graphView = (GraphView) findViewById(R.id.chart);
-        series = new LineGraphSeries<DataPoint>();
-        graphView.addSeries(series);
+
+        /** 앱실행시 db에 존재하는 데이터를 참조하여 그래프에 데이터추가 **/
+        Cursor res = graphdbHelper.getAllDate();
+        if(res.getCount() == 0){
+            f = 0;
+        }
+        else{
+            while(res.moveToNext()){
+                date = new Date(res.getString(1));
+                f = res.getFloat(2);
+                series.appendData(new DataPoint(date, f), true, 500);
+            }
+            graphView.addSeries(series);
+        }
+
         /** 그래프 x축의 날짜 데이터 포멧변환 **/
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter()
         {
