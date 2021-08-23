@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,33 +79,38 @@ public class MainActivity2 extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-        
-        /*소셜 로그인과 회원 로그인 분리해야 할듯? 일단 로그아웃 시에는 문제가 없음*/
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                NaviMenu naviMenu = new NaviMenu(nContext, item, currentUser);
+                naviMenu.selectMenu();
 
-                int id=item.getItemId();
-
-                /*로그아웃*/
-                if (id==R.id.main_logout){
-                    mOAuthLogin=OAuthLogin.getInstance();
-                    mOAuthLogin.logout(nContext);
-                    currentUser.setCurrentUser(null, "", "", 0, 0, 0);
-                    Toast.makeText(nContext,"로그아웃",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(MainActivity2.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                if(id==R.id.menu_calendar){
-                    Intent intent=new Intent(MainActivity2.this,CalendarActivity.class);
-                    startActivity(intent);
-                }
-
-                if(id==R.id.menu_health_record){
-                    Intent intent=new Intent(MainActivity2.this,HealthRecordActivity.class);
-                    startActivity(intent);
-                }
+//                int id=item.getItemId();
+//
+//                /*로그아웃*/
+//                if (id==R.id.main_logout){
+//                    mOAuthLogin=OAuthLogin.getInstance();
+//                    mOAuthLogin.logout(nContext);
+//                    currentUser.setCurrentUser(null, "", "", 0, 0, 0);
+//                    Toast.makeText(nContext,"로그아웃",Toast.LENGTH_SHORT).show();
+//                    Intent intent=new Intent(MainActivity2.this,MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                if(id==R.id.menu_calendar){
+//                    Intent intent=new Intent(MainActivity2.this,CalendarActivity.class);
+//                    startActivity(intent);
+//                }
+//
+//                if(id==R.id.menu_health_record){
+//                    Intent intent=new Intent(MainActivity2.this,HealthRecordActivity.class);
+//                    startActivity(intent);
+//                }
+//                if (id==R.id.menu_myInfo){
+//                    Intent intent = new Intent(MainActivity2.this, PointActivity.class);
+//                    startActivity(intent);
+//                }
                 return false;
             }
         });

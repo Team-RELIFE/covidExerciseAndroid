@@ -14,7 +14,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
@@ -24,36 +25,35 @@
 
     <ImageView
         android:id="@+id/add_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:padding="5dp"
         android:src="@drawable/add" />
 
     <TextView
         android:id="@+id/add_text"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginStart="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_toEndOf="@id/add_icon"
-        android:maxLines="1"
+        android:layout_marginLeft="5dp"
         android:paddingTop="5dp"
         android:paddingEnd="16dp"
         android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textSize="15dp"
         android:textColor="@color/black"
         android:text="포인트 적립"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/add_secondary_text"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/add_text"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="0dp"
         android:layout_toEndOf="@id/add_icon"
-        android:maxLines="2"
+        android:layout_marginLeft="5dp"
         android:paddingEnd="16dp"
         android:text="적립 날짜"
+        android:textSize="13dp"
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="@color/black" />
 </RelativeLayout>
