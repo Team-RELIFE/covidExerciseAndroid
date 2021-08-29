@@ -1,61 +1,48 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.board;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.example.exercise_android1.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class HealthRecordActivity extends AppCompatActivity {
+public class GetPostsActivity extends AppCompatActivity {
 
-    private final String TAG = "HealthRecordActivity";
-
-    TextView record_list;
-    TextView mainText;
-    User currentUser = new User().getCurrentUser();
-
-    String userid = "";
+    public ArrayList<Post> posts = new ArrayList<Post>();
+    String page = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reserveation);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        mainText = (TextView) findViewById(R.id.mainText);
-        record_list = (TextView) findViewById(R.id.record_list); //검색 결과 텍스트뷰
 
-        if (currentUser.id != null) {
-            userid = currentUser.id;
-            mainText.setText(currentUser.name+"님의 기록");
-            ConnectServer();
-        }
-        else {
-            mainText.setText("로그인이 필요한 서비스입니다.");
-        }
+        connectDB();
     }
 
+    public void sendData(String s) {
+        Intent intent=new Intent(getApplicationContext(), CustomListActivity.class);
+        intent.putExtra("result", s);
+        startActivity(intent);
+    }
 
-    private void ConnectServer(){
+    public void connectDB(){
+
+        ArrayList<Post> posts = new ArrayList<Post>();
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = getString(R.string.db_server)+"bmiRecord.jsp";
-        final String urlSuffix = "?id=" + userid;
-        //Log.d("urlSuffix", urlSuffix);
+        final String SIGNIN_URL = getString(R.string.db_server)+"getPosts.jsp";
 
-        class SearchHealthRecord extends AsyncTask<String, Void, String> {
+        class UserPost extends AsyncTask<String, Void, String> {
 
             //스레드 관련 및 ui와의 통신을 위한 함수들이 구현되어 있음
 
@@ -68,45 +55,33 @@ public class HealthRecordActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s); // s : DB로부터 리턴된 값
 
-                //s == null -> db 통신 오류, s의 길이는 기본 2이므로 s.length == 2일 때 검색된 값이 없는 것으로 취급
-
                 if (s != null) { //리턴 값이 null이 아니면 jsonArray로 값 목록을 받음
-
                     try{
                         if (s.length() <= 2) { //검색된 값이 없음
-                            Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+                            System.out.println("from getposts activity :" +s);
+                            Toast toast = Toast.makeText(getApplicationContext(), "작성된 글이 없습니다.", Toast.LENGTH_SHORT);
+                            toast.show();
                         }
                         else {
-                            JSONArray jArr = new JSONArray(s);;
-                            JSONObject json = new JSONObject();
-
-                            //jsonArray의 길이(리턴된 값 길이)만큼 jsonObject에 담아 텍스트뷰에 출력
-
-                            for (int i = 0; i < jArr.length(); i++) {
-                                json = jArr.getJSONObject(i);
-
-                                userid = json.getString("id");
-                                Double height = json.getDouble("height");
-                                Double weight = json.getDouble("weight");
-                                Double bmi = json.getDouble("bmi");
-                                String date = json.getString("date");
-
-                                record_list.append("날짜 : "+ date + "\n신장 : " + height + "\n체중 : " + weight + "\nBMI : " + bmi + "\n\n");
-                            }
+                            sendData(s);
                         }
-                    }catch(Exception e) {
+
+                    } catch(Exception e) {
                         e.printStackTrace();
                     }
                 }
+
                 else {
-                    Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+                    //System.out.println("from getposts activity :" +s);
+                    Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             protected String doInBackground(String... params) {
                 BufferedReader bufferedReader = null;
-                String line = null, page = "";
+                String line = null;
+                page = "";
 
                 try {
                     HttpURLConnection conn = null;
@@ -121,7 +96,7 @@ public class HealthRecordActivity extends AppCompatActivity {
 
 
                     //strParams에 데이터를 담아 서버로 보냄
-                    String strParams = "id=" + userid;
+                    String strParams = "";
 
                     OutputStream os = conn.getOutputStream();
                     os.write(strParams.getBytes("UTF-8"));
@@ -130,7 +105,7 @@ public class HealthRecordActivity extends AppCompatActivity {
 
                     // 통신 체크 : 연결 실패시 null 반환하고 종료
                     if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                        Log.d(TAG, "통신 오류");
+                        Log.d("GetPostsActivity", "통신 오류");
                         return null;
                     }
 
@@ -149,12 +124,12 @@ public class HealthRecordActivity extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 return null;
             }
         }
 
-        SearchHealthRecord shr = new SearchHealthRecord();
-        shr.execute(urlSuffix);
+        UserPost up = new UserPost();
+        up.execute();
+
     }
 }
