@@ -1,4 +1,4 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.Calendar;
 
 import android.content.ContentValues;
 import android.content.Context;

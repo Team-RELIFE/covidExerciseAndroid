@@ -1,4 +1,4 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -7,7 +7,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -34,6 +33,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.exercise_android1.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -44,8 +44,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -88,10 +86,10 @@ public class CalendarActivity extends AppCompatActivity {
     ItemTouchHelper itemTouchHelper;
 
     /*도트*/
-    dotspanDBHelper dotspanDBHelper; /*테이블명 저장용 db 클래스*/
+    com.example.exercise_android1.Calendar.dotspanDBHelper dotspanDBHelper; /*테이블명 저장용 db 클래스*/
     SQLiteDatabase dotDB;
     final static String dotDBName="calendar_monthDay"; /*테이블명 저장용 db 이름*/
-    public HashMap<String,EventDecorator> eventMap=new HashMap<>();
+    public HashMap<String, EventDecorator> eventMap=new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

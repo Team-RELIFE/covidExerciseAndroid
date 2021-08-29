@@ -1,4 +1,4 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.Calendar;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

@@ -3,46 +3,26 @@ package com.example.exercise_android1.graph;
 //통계 임시 패키지 입니다
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import android.widget.Toast;
 
-import com.example.exercise_android1.DBHelper;
 import com.example.exercise_android1.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 
 
 public class graph extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.Calendar;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -12,6 +12,8 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+
+import com.example.exercise_android1.R;
 
 //리시버 manifest에 등록하기!!
 //android:exported 속성을 false로 설정하면 리시버가 내 앱으로부터 전달되는 인텐트만 받음
