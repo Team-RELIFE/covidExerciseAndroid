@@ -91,7 +91,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/pointlayout"
                 android:layout_width="400dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_below="@+id/userEmail"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
@@ -100,33 +100,37 @@
                 android:gravity="clip_horizontal">
 
                 <TextView
-                    android:id="@+id/pointText"
+                    android:id="@+id/pointText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/pointText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/userpoint"
                     android:layout_width="150dp"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="clip_horizontal"
-                    android:text="보유 포인트"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    android:layout_below="@+id/pointText"/>
+                    android:layout_below="@+id/pointText1"/>
+
 
                 <TextView
                     android:id="@+id/point"
                     android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:layout_below="@+id/userpoint"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pointText2"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="clip_horizontal"
-                    android:text="누적 포인트"
                     android:textSize="15dp"
                     android:textStyle="bold" />
             </androidx.appcompat.widget.Toolbar>
