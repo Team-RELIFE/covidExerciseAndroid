@@ -32,7 +32,8 @@ public class PointActivity extends AppCompatActivity {
 
     private final String TAG = "PointActivity";
 
-    TextView pointText;
+    TextView pointText1;
+    TextView pointText2;
     TextView point; //누적 포인트
     TextView userpoint;
     User currentUser = new User().getCurrentUser();
@@ -45,15 +46,23 @@ public class PointActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        point = (TextView) findViewById(R.id.point); //누적 포인트
+        pointText1 = (TextView) findViewById(R.id.pointText1);
         userpoint = (TextView) findViewById(R.id.userpoint); //보유 포인트
-        pointText = (TextView) findViewById(R.id.pointText);
+        pointText2 = (TextView) findViewById(R.id.pointText2);
+        point = (TextView) findViewById(R.id.point); //누적 포인트
 
         if (currentUser.id != null) {
             userid = currentUser.id;
-            pointText.setText(currentUser.name+"님의 포인트");
+            pointText1.setText(currentUser.name+"님의 보유 포인트");
             ConnectServer();
         }
+
+        if (currentUser.id != null) {
+            userid = currentUser.id;
+            pointText2.setText(currentUser.name+"님의 누적 포인트");
+            ConnectServer();
+        }
+
         else {
             point.setText("로그인이 필요한 서비스입니다.");
         }
@@ -102,8 +111,12 @@ public class PointActivity extends AppCompatActivity {
                                 Double u_userpoint = json.getDouble("userpoint");
                                 String date = json.getString("date");
 
-                                point.append("날짜 : "+ date + "\n누적 포인트 : " + u_point + "\n\n");
+                                /*StringBuilder sql = new StringBuilder();
+                                sql.append("SELECT userId ,sum(point) FROM point GROUP BY userId"); */
+
                                 userpoint.append("\n보유 포인트 : " + u_userpoint +"\n\n");
+                                point.append("\n누적 포인트 : " + u_point + "\n\n");
+
                             }
                         }
                     }catch(Exception e) {
