@@ -44,7 +44,7 @@
             />
 
         <EditText
-            android:id="@+id/nickname"
+            android:id="@+id/nameTv"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_below="@+id/galleryBtn"
@@ -60,7 +60,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
-            android:layout_below="@+id/nickname"
+            android:layout_below="@+id/nameTv"
             android:src="@drawable/ic_stat_name"
             />
 
@@ -68,7 +68,7 @@
             android:id="@+id/joinIdEdit"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nickname"
+            android:layout_below="@+id/nameTv"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/JoinImage1"
             android:hint="이메일" />

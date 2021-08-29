@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.exercise_android1.Calendar.CalendarActivity;
+import com.example.exercise_android1.board.GetPostsActivity;
+import com.example.exercise_android1.reservation.ReservationListActivity;
 import com.nhn.android.naverlogin.OAuthLogin;
 
 /**내비게이션 메뉴 선택 클래스
@@ -52,6 +54,14 @@ public class NaviMenu extends ContextWrapper{
         }
         if (id==R.id.menu_myInfo){
             Intent intent = new Intent(context, PointActivity.class);
+            startActivity(intent);
+        }
+        if (id==R.id.menu_board){
+            Intent intent = new Intent(context, GetPostsActivity.class);
+            startActivity(intent);
+        }
+        if (id==R.id.menu_reservation) {
+            Intent intent = new Intent(context, ReservationListActivity.class);
             startActivity(intent);
         }
     }

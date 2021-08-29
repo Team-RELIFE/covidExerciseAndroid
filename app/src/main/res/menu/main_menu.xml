@@ -12,6 +12,11 @@
         android:title="내정보"/>
 
     <item
+        android:id="@+id/menu_reservation"
+        android:icon="@android:drawable/btn_star"
+        android:title="내 PT 확인" />
+
+    <item
         android:id="@+id/menu_chat"
         android:icon="@drawable/ic_stat_chat"
         android:title="채팅"/>
@@ -25,6 +30,11 @@
         android:id="@+id/menu_health_record"
         android:icon="@drawable/ic_stat_event"
         android:title="운동기록"/>
+
+    <item
+        android:id="@+id/menu_board"
+        android:icon="@drawable/ic_stat_event"
+        android:title="PT 게시판" />
 
 
 </menu>

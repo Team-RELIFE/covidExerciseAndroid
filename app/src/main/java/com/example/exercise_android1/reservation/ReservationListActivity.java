@@ -1,4 +1,4 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.reservation;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.exercise_android1.R;
+import com.example.exercise_android1.User;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,9 +21,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HealthRecordActivity extends AppCompatActivity {
+public class ReservationListActivity extends AppCompatActivity {
 
-    private final String TAG = "HealthRecordActivity";
+    private final String TAG = "ReservationRecordActivity";
 
     TextView record_list;
     TextView mainText;
@@ -39,7 +42,7 @@ public class HealthRecordActivity extends AppCompatActivity {
 
         if (currentUser.id != null) {
             userid = currentUser.id;
-            mainText.setText(currentUser.name+"님의 기록");
+            mainText.setText(currentUser.name+"님의 예약 내역");
             ConnectServer();
         }
         else {
@@ -51,11 +54,10 @@ public class HealthRecordActivity extends AppCompatActivity {
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
-        final String SIGNIN_URL = getString(R.string.db_server)+"bmiRecord.jsp";
-        final String urlSuffix = "?id=" + userid;
-        //Log.d("urlSuffix", urlSuffix);
+        final String SIGNIN_URL = getString(R.string.db_server)+"showReservation.jsp";
+        final String urlSuffix = "?type=0" + "&id=" + userid;
 
-        class SearchHealthRecord extends AsyncTask<String, Void, String> {
+        class SearchReservationRecord extends AsyncTask<String, Void, String> {
 
             //스레드 관련 및 ui와의 통신을 위한 함수들이 구현되어 있음
 
@@ -85,13 +87,14 @@ public class HealthRecordActivity extends AppCompatActivity {
                             for (int i = 0; i < jArr.length(); i++) {
                                 json = jArr.getJSONObject(i);
 
-                                userid = json.getString("id");
-                                Double height = json.getDouble("height");
-                                Double weight = json.getDouble("weight");
-                                Double bmi = json.getDouble("bmi");
-                                String date = json.getString("date");
+                                int id = json.getInt("id");
+                                String trainer = json.getString("trainer");
+                                String trainee = json.getString("trainee");
+                                int status = json.getInt("status");
+                                int post = json.getInt("post");
 
-                                record_list.append("날짜 : "+ date + "\n신장 : " + height + "\n체중 : " + weight + "\nBMI : " + bmi + "\n\n");
+                                record_list.append("예약번호 : "+ String.valueOf(id) + "\n강사명 : " + trainer + "\n예약자명 : " +
+                                        trainee + "\n진행상태 : " + status + "\n게시글 : " + String.valueOf(post)+"\n\n");
                             }
                         }
                     }catch(Exception e) {
@@ -121,7 +124,7 @@ public class HealthRecordActivity extends AppCompatActivity {
 
 
                     //strParams에 데이터를 담아 서버로 보냄
-                    String strParams = "id=" + userid;
+                    String strParams = "type=0" + "&id=" + userid;
 
                     OutputStream os = conn.getOutputStream();
                     os.write(strParams.getBytes("UTF-8"));
@@ -130,7 +133,7 @@ public class HealthRecordActivity extends AppCompatActivity {
 
                     // 통신 체크 : 연결 실패시 null 반환하고 종료
                     if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                        Log.d(TAG, "통신 오류");
+                        Log.d("reserveActivity", "통신 오류");
                         return null;
                     }
 
@@ -154,7 +157,8 @@ public class HealthRecordActivity extends AppCompatActivity {
             }
         }
 
-        SearchHealthRecord shr = new SearchHealthRecord();
+        SearchReservationRecord shr = new SearchReservationRecord();
         shr.execute(urlSuffix);
     }
 }
+

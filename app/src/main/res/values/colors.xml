@@ -12,4 +12,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="transparent">#00000000</color>
     <color name="gray">#FFC5C5C5</color>
+    <color name="main_blue">#54BFEF</color>
 </resources>
