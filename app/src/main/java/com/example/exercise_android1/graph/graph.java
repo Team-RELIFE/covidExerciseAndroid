@@ -89,7 +89,7 @@ public class graph extends AppCompatActivity {
                         value = inputValue;
                         f = Float.parseFloat(value);
 
-                        graphdbHelper.insertData(day, f);
+                        graphdbHelper.updateData(db, day, f);
 
                         //갱신된 DB를 바탕으로 그래프를 갱신
                         series.resetData(grabData());

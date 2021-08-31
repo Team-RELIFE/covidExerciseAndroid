@@ -33,8 +33,7 @@ public class graphDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(long date, float f){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertData(SQLiteDatabase db, long date, float f){
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, date);
         contentValues.put(COL_3, f);
@@ -45,46 +44,43 @@ public class graphDBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    /** DB 업데이트 메소드(임시) **/
+    public void updateTable(SQLiteDatabase db, long date, float f){
+        String day = Long.toString(date);
+        ContentValues values = new ContentValues();
+        values.put(COL_2, date);
+        values.put(COL_3, f);
+        db.update(TABLE_NAME, values, "DATE=?", new String[]{day});
+    }
+
     public void updateData(SQLiteDatabase db, long date, float f) {
 
-        int i = 0;
+        Cursor temp = getAllDate();
+        Cursor temp2;
 
-        //db테이블을 검색할 커서 선언
-        Cursor temp = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-
-        //db에 데이터가 없다면 입력받은 값을 db에 추가
-        if(temp == null){
-            insertData(date, f);
+        //DB가 비어있으면 바로 데이터 추가
+        if(temp.getCount() == 0){
+            insertData(db, date, f);
             return;
         }
 
-        //db에 데이터가 있다면 입력받은 날짜 데이터가 존재하는지 검색
-        if (temp != null) {
-            if (temp.moveToFirst()) {
-                do {
-                    long search_day = temp.getLong(1);
-                    //테이블을 1행씩 순차적으로 검색하여 입력받은 날짜와 동일한 데이터가 있는지 검색하고
-                    //동일한 데이터가 존재한다면 해당 행의 몸무게 값을 새로 받은 값으로 업데이트
-                    if (search_day == date) {
-                        ContentValues values = new ContentValues();
-                        values.put(COL_2, date);
-                        values.put(COL_3, f);
-                        db.insert(TABLE_NAME, null, values);
-                        return;
-                    } else {
-                        i++;
-                    }
-                } while (temp.moveToNext());
-                //동일한 날짜 데이터가 존재하지 않는다면 입력받은 데이터를 db에 새로 추가
-                if(i == temp.getCount()) {
-                    ContentValues values = new ContentValues();
-                    values.put(COL_2, date);
-                    values.put(COL_3, f);
-                    db.insert(TABLE_NAME, null, values);
-                }
-            }
+        //DB에 입력받은 날짜와 동일한 데이터가 있는지 검색
+        String s = Long.toString(date);
+        String queryString = "SELECT * FROM DP_table WHERE DATE = " + s;
+
+        temp2 = db.rawQuery(queryString, null);
+
+        //동일한 데이터가 없다면 새로 추가
+        if(temp2.getCount() == 0){
+            ContentValues values = new ContentValues();
+            values.put(COL_2, date);
+            values.put(COL_3, f);
+            db.insert(TABLE_NAME, null, values);
+            return;
         }
+
+        //동일한 데이터가 존재하면 수정
+        updateTable(db, date, f);
+        return;
     }
 
     public Cursor getAllDate(){
