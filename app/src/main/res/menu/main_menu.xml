@@ -36,5 +36,11 @@
         android:icon="@drawable/ic_stat_event"
         android:title="PT 게시판" />
 
+    <item
+        android:icon="@drawable/ic_stat_chat"
+        android:title="포인트"
+        android:id="@+id/menu_point"
+        />
+
 
 </menu>

@@ -189,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
                         conn.setDoOutput(true); //output을 사용하도록 설정 (default : false)
 
                         //strParams에 데이터를 담아 서버로 보냄
-                        String strParams = "id=" + id;
+                        // String strParams = "id=" + id;
+                        String strParams = "userId=" + id;
 
                         OutputStream os = conn.getOutputStream();
                         os.write(strParams.getBytes("UTF-8"));

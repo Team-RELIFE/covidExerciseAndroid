@@ -212,8 +212,8 @@ public class CalendarActivity extends AppCompatActivity {
                 else {
                     if(!time.isEmpty()){ //알람 시간을 설정했을 경우
                         if (id==R.id.alarmOnCheck){ //체크박스 on 선택 시 제목,내용,알람시간 모두 db에 저장
-                            dbHelper.insertDBcontent(db,title,content,time);
                             setAlarm();
+                            dbHelper.insertDBcontent(db,title,content,time, requestCode1); //수정
                             dotspanDBHelper.insertDBcontent(dotDB,sMonth,sDay);
                             EventDecorator ev=new EventDecorator(Color.BLUE,Collections.singleton(CalendarDay.from(Year,iMonth-1,iDay)));
                             calendarView.addDecorator(ev);
@@ -371,7 +371,7 @@ public class CalendarActivity extends AppCompatActivity {
                     time=sHour+":"+sMinute;
                     if (originAlarm==null){ //기존의 것 삭제하고 새로 생성
                         dbHelper.deleteDBcontent(db,originTitle);
-                        dbHelper.insertDBcontent(db,title,content,time);
+                        dbHelper.insertDBcontent(db,title,content,time,requestCode1); // 0914 수정
                     }else{ //기존 일정 업데이트
                         dbHelper.updateDBcontent(db,title,originTitle,content,originContent,time,originAlarm);
                     }

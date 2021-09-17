@@ -106,7 +106,7 @@ public class swipeController extends ItemTouchHelper.Callback {
     }
 
     private void drawtext(String text, Canvas c, RectF button, Paint p){ //버튼 내에 글씨 삽입
-        float textSize=25;
+        float textSize=28;
         p.setColor(Color.WHITE);
         p.setAntiAlias(true);
         p.setTextSize(textSize);

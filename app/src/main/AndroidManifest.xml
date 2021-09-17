@@ -39,7 +39,8 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity2" />
+        <activity android:name=".MainActivity2" >
+        </activity>
         <activity android:name=".JoinActivity2" />
 
         <service android:name=".Calendar.MyService"

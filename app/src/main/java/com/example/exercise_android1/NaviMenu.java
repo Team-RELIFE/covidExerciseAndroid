@@ -64,5 +64,9 @@ public class NaviMenu extends ContextWrapper{
             Intent intent = new Intent(context, ReservationListActivity.class);
             startActivity(intent);
         }
+        if (id==R.id.menu_point) {
+            Intent intent = new Intent(context, PointHistoryActivity.class);
+            startActivity(intent);
+        }
     }
 }
