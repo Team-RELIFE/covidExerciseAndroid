@@ -64,4 +64,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("UPDATE "+tableName+" SET "+"Content="+"'"+content+"'"+" WHERE Content="+"'"+originContent+"'"+";");
         db.execSQL("UPDATE "+tableName+" SET "+"Alarm="+"'"+alarm+"'"+" WHERE Alarm="+"'"+originAlarm+"'"+";");
     }
+
+    public void modifyDBcontent(SQLiteDatabase db,String title,String originTitle,String content,String originContent,String alarm,String originAlarm, String rqCode, String originrqCode){ //데이터 변경
+        String tableName="schedule"+month+day;
+        db.execSQL("UPDATE "+tableName+" SET "+"Title="+"'"+title+"'"+" WHERE Title="+"'"+originTitle+"'"+";");
+        db.execSQL("UPDATE "+tableName+" SET "+"Content="+"'"+content+"'"+" WHERE Content="+"'"+originContent+"'"+";");
+        db.execSQL("UPDATE "+tableName+" SET "+"Alarm="+"'"+alarm+"'"+" WHERE Alarm="+"'"+originAlarm+"'"+";");
+        db.execSQL("UPDATE "+tableName+" SET "+"RQ_code="+"'"+rqCode+"'"+" WHERE RQ_code="+"'"+originrqCode+"'"+";"); //요청코드 업데이트
+    }
 }

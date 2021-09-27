@@ -48,7 +48,7 @@ import java.util.HashMap;
 public class CalendarActivity extends AppCompatActivity {
 
     EditText titleText,contentText; /*제목, 내용 입력*/
-    MaterialCalendarView calendarView; /*Material 캘린더뷰*/
+    public MaterialCalendarView calendarView; /*Material 캘린더뷰*/
     TextView alarmText; /*선택한 시간 정보를 텍스트로 입력받을 textView*/
     public static Context context;
 

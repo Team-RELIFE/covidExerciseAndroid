@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
@@ -100,6 +101,33 @@
             app:layout_constraintTop_toBottomOf="@+id/notice_shape"
             tools:ignore="MissingConstraints" />
 
+        <ImageButton
+            android:id="@+id/scheduleOfToday_addBtn"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/plus"
+            android:background="@null"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@+id/schedulesOfToday_Text"
+            app:layout_constraintTop_toBottomOf="@+id/notice_shape"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/passed_schedules"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:text="지나간 일정"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#7FCCEF"
+            app:layout_constraintEnd_toEndOf="@id/schedulesOfToday_recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/notice_shape"
+            tools:ignore="MissingConstraints,SmallSp" />
+
         <TextView
             android:id="@+id/schedulesOfToday_Text2"
             android:layout_width="0dp"
@@ -110,6 +138,24 @@
             app:layout_constraintStart_toStartOf="parent"
             android:textSize="15dp"
             tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/null_scheduleView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/schedulesOfToday_Text"
+            app:layout_constraintStart_toStartOf="@id/bell_img"
+            app:layout_constraintEnd_toEndOf="@id/notice_shape"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘은 등록된 일정이 없습니다."
+                tools:ignore="NotSibling" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/schedulesOfToday_recyclerView"

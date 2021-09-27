@@ -18,9 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".Calendar.CalendarActivity"></activity>
-
+        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,38 +28,42 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="tistory2.page.link/link" android:scheme="http"/>
-                <data android:host="tistory2.page.link/link" android:scheme="https"/>
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="http" />
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="https" />
                 <data android:scheme="https://tistory2.page.link" />
-
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity2" >
-        </activity>
+        <activity android:name=".MainActivity2"></activity>
         <activity android:name=".JoinActivity2" />
 
-        <service android:name=".Calendar.MyService"
+        <service
+            android:name=".Calendar.MyService"
             android:enabled="true"
-            android:exported="true"
-            />
+            android:exported="true" />
+
         <receiver android:name=".Calendar.AlarmReceiver">
             android:enabled="true"
             android:exported="true"
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <activity android:name=".JoinActivity1" >
+
+        <activity android:name=".JoinActivity1">
             <intent-filter>
 
                 <!-- <action android:name="android.intent.action.MAIN" /> -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SessionActivity"
             android:label="OpenVidu Android">
@@ -92,27 +94,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".pt.PtActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" android:screenOrientation="portrait">
+        <activity
+            android:name=".pt.PtActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="tistory2.page.link/link" android:scheme="http"/>
-                <data android:host="tistory2.page.link/link" android:scheme="https"/>
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="http" />
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="https" />
                 <data android:scheme="https://tistory2.page.link" />
-
             </intent-filter>
-
         </activity>
-
         <activity android:name=".board.CreatePostActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -148,7 +153,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".reservation.ReservationListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -156,7 +160,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".graph.graph">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -164,7 +167,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

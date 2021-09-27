@@ -1,11 +1,11 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.TodaySchedules;
 
 public class TodayScheduleItems {
 
     String title;
     String alarm;
 
-    TodayScheduleItems(String title, String alarm){
+    public TodayScheduleItems(String title, String alarm){
         this.title=title;
         this.alarm=alarm;
     }

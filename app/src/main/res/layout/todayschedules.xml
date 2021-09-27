@@ -24,6 +24,13 @@
             android:textSize="16dp"
             tools:ignore="MissingConstraints" />
 
+        <ImageView
+            android:id="@+id/alarmState_Img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintEnd_toStartOf="@+id/tdSchedule_alarm"/>
+
         <TextView
             android:id="@+id/tdSchedule_alarm"
             android:layout_width="wrap_content"
