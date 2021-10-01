@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/rect"
             android:orientation="vertical"
+            android:layout_marginBottom="10dp"
             android:elevation="5dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,6 +37,34 @@
                     android:layout_marginLeft="10dp"
                     android:text="몸무게 (KG)"
                     android:textColor="@color/black" />
+            </LinearLayout>
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="450px"
+            android:background="@drawable/rect"
+            android:orientation="vertical"
+            android:elevation="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="나의 BMI"
+                    android:textColor="@color/black" />
                 <Button
                     android:layout_width="40dp"
                     android:layout_height="50dp"
@@ -45,12 +74,48 @@
                     android:background="#00ff0000"
                     android:layout_gravity="right" />
             </LinearLayout>
-            <com.jjoe64.graphview.GraphView
+
+            <TextView
+                android:layout_gravity="left|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="25dp"
+                android:id="@+id/bmi"
+                android:text="(신체정보를 입력해주세요)"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_gravity="left|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/bmi_result"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="2dp"
+                android:paddingLeft="42dp"
+                android:layout_marginBottom="52dp"
+                android:id="@+id/bar_chart_assist"
+                android:textSize="12dp"
+                android:text="0       18.5          23            25                 30"
+                android:textColor="@color/black" />
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:layout_gravity="bottom"
+                android:id="@+id/bar_chart"
                 android:layout_width="match_parent"
-                android:layout_height="800px"
-                android:id="@+id/chart" />
+                android:layout_height="130px"
+                android:layout_marginTop="1dp"
+                android:paddingTop="1dp"
+                android:layout_marginBottom="20dp"/>
 
-        </LinearLayout>
 
+        </FrameLayout>
     </LinearLayout>
 </ScrollView>
