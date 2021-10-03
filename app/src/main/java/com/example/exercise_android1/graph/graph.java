@@ -206,6 +206,7 @@ public class graph extends AppCompatActivity {
                         graphView.getViewport().setXAxisBoundsManual(true);
                         graphView.getViewport().setYAxisBoundsManual(true);
                         graphView.getViewport().setMinY(30);
+                        graphView.getViewport().setMaxY(120);
                         graphView.getViewport().setScalable(true);  // activate horizontal zooming and scrolling
                         graphView.getViewport().setScrollable(true);  // activate horizontal scrolling
                         graphView.getGridLabelRenderer().setHumanRounding(false);
@@ -273,6 +274,7 @@ public class graph extends AppCompatActivity {
             graphView.getViewport().setXAxisBoundsManual(true);
             graphView.getViewport().setYAxisBoundsManual(true);
             graphView.getViewport().setMinY(30);
+            graphView.getViewport().setMaxY(120);
             graphView.getGridLabelRenderer().setHumanRounding(false);
 
         }
