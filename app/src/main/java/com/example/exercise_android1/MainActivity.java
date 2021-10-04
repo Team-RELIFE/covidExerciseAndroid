@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                         //strParams에 데이터를 담아 서버로 보냄
                         // String strParams = "id=" + id;
-                        String strParams = "userId=" + id;
+                        String strParams = "id=" + id;
 
                         OutputStream os = conn.getOutputStream();
                         os.write(strParams.getBytes("UTF-8"));

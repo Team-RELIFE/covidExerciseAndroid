@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.exercise_android1.Calendar.CalendarActivity;
 import com.example.exercise_android1.board.GetPostsActivity;
+import com.example.exercise_android1.reservation.GetItemActivity;
 import com.example.exercise_android1.reservation.ReservationListActivity;
 import com.nhn.android.naverlogin.OAuthLogin;
 
@@ -61,7 +62,7 @@ public class NaviMenu extends ContextWrapper{
             startActivity(intent);
         }
         if (id==R.id.menu_reservation) {
-            Intent intent = new Intent(context, ReservationListActivity.class);
+            Intent intent = new Intent(context, GetItemActivity.class);
             startActivity(intent);
         }
         if (id==R.id.menu_point) {
