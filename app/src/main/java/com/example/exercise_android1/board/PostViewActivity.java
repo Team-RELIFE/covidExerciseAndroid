@@ -24,7 +24,7 @@ import java.net.URL;
 
 public class PostViewActivity extends AppCompatActivity {
 
-    String id, title, writer, content = "";
+    String id, title, writer, content, date = "";
     int opResult = 0;
 
     @Override
@@ -38,6 +38,7 @@ public class PostViewActivity extends AppCompatActivity {
         title = intent.getStringExtra("title");
         writer = intent.getStringExtra("writer");
         content = intent.getStringExtra("content");
+        date = intent.getStringExtra("date");
 
         TextView titleTv = (TextView) findViewById(R.id.titleTv);
         TextView dateTv = (TextView) findViewById(R.id.dateTv);
@@ -47,6 +48,7 @@ public class PostViewActivity extends AppCompatActivity {
         trainerName.setText(writer);
         titleTv.setText(title);
         contentTv.setText(content);
+        dateTv.setText(date+" 작성");
 
         //본인이 작성한 글만 '수정', '삭제' 표시
         if (writer.equals(User.id)) {

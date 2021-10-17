@@ -13,6 +13,8 @@ public class graphDBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "graph_DP.db";
     public static final String TABLE_NAME = "DP_table";
+    public static final String TABLE_NAME2 = "bmi_table";
+
 
     public static final String COL_1 = "ID";
     public static final String COL_2 = "DATE";
@@ -83,9 +85,46 @@ public class graphDBHelper extends SQLiteOpenHelper {
         return;
     }
 
+    public boolean bmi_insertData(SQLiteDatabase db, float height, float weight){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("HEIGHT", height);
+        contentValues.put("WEIGHT", weight);
+        long result = db.insert(TABLE_NAME2, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public void bmi_updateTable(SQLiteDatabase db, float height, float weight){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("HEIGHT", height);
+        contentValues.put("WEIGHT", weight);
+        db.update(TABLE_NAME2, contentValues, "ID=?", new String[]{"1"});
+    }
+
+    public void bmi_updateData(SQLiteDatabase db, float height, float weight) {
+
+        Cursor temp = bmi_getDate();
+
+        if(temp.getCount() == 0){
+            bmi_insertData(db, height, weight);
+        }
+        else{
+            bmi_updateTable(db, height, weight);
+        }
+        return;
+    }
+
     public Cursor getAllDate(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        return res;
+    }
+
+    public Cursor bmi_getDate(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME2, null);
         return res;
     }
 

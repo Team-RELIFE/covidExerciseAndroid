@@ -9,27 +9,7 @@
     <item
         android:id="@+id/menu_myInfo"
         android:icon="@drawable/ic_stat_info"
-        android:title="내정보"/>
-
-    <item
-        android:id="@+id/menu_reservation"
-        android:icon="@android:drawable/btn_star"
-        android:title="내 PT 확인" />
-
-    <item
-        android:id="@+id/menu_chat"
-        android:icon="@drawable/ic_stat_chat"
-        android:title="채팅"/>
-
-    <item
-        android:id="@+id/menu_calendar"
-        android:icon="@drawable/ic_stat_calendar"
-        android:title="일정관리"/>
-
-    <item
-        android:id="@+id/menu_health_record"
-        android:icon="@drawable/ic_stat_event"
-        android:title="운동기록"/>
+        android:title="내 정보"/>
 
     <item
         android:id="@+id/menu_board"
@@ -37,10 +17,25 @@
         android:title="PT 게시판" />
 
     <item
-        android:icon="@drawable/ic_stat_chat"
-        android:title="포인트"
-        android:id="@+id/menu_point"
-        />
+        android:id="@+id/menu_reservation"
+        android:icon="@android:drawable/btn_star"
+        android:title="내 PT확인" />
+
+    <item
+        android:id="@+id/menu_calendar"
+        android:icon="@drawable/ic_stat_calendar"
+        android:title="운동 일정 관리"/>
+
+    <item
+        android:id="@+id/menu_bmi_record"
+        android:icon="@drawable/ic_stat_event"
+        android:title="BMI 기록"/>
+
+<!--    <item-->
+<!--        android:icon="@drawable/ic_stat_chat"-->
+<!--        android:title="포인트"-->
+<!--        android:id="@+id/menu_point"-->
+<!--        />-->
 
 
 </menu>
