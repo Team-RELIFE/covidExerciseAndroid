@@ -76,16 +76,13 @@
             android:textColor="@color/white"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/notice_title"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/nt_viewpager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             app:layout_constraintStart_toEndOf="@+id/notice_main"
             app:layout_constraintTop_toTopOf="@+id/notice_shape"
-            android:text=" 업데이트"
-            android:textSize="16dp"
-            android:textColor="@color/white"
             tools:ignore="MissingConstraints" />
 
         <TextView

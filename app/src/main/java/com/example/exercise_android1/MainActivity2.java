@@ -19,6 +19,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -36,6 +38,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.exercise_android1.Calendar.AlarmReceiver;
 import com.example.exercise_android1.Calendar.CalendarActivity;
@@ -95,6 +98,12 @@ public class MainActivity2 extends AppCompatActivity {
    AlarmManager alarmManager;
    int mRequestCode;
 
+   //공지사항
+    ViewPager2 notice_list;
+    NoticeTitleAdapter noticeTitleAdapter;
+    Handler slideHandler;
+    int currentNum=0;
+
    //시간 지난 일정 지우기
     long now = System.currentTimeMillis(); //현재시간 가져옴
     Date dateNow = new Date(now); // Date 형식으로 convert
@@ -137,6 +146,9 @@ public class MainActivity2 extends AppCompatActivity {
         schedule_addBtn.setColorFilter(Color.parseColor("#7FCCEF"));
         passedSchedulesBtn=(Button)findViewById(R.id.passed_schedules);
 
+        notice_list=(ViewPager2)findViewById(R.id.nt_viewpager);
+        slideHandler=new Handler(Looper.getMainLooper());
+
         dbHelper=new DBHelper(nContext,dbName,null,dbVersion,sMonth,sDay);
         db=dbHelper.getReadableDatabase();
         dbHelper.onCreate(db);
@@ -156,6 +168,21 @@ public class MainActivity2 extends AppCompatActivity {
         } else {
             header_userName.setText("Guest 님");
         }
+
+        noticeTitleAdapter=new NoticeTitleAdapter(nContext);
+        noticeTitleAdapter.addItem(new NoticeTitleItem("9월 업데이트"));
+        noticeTitleAdapter.addItem(new NoticeTitleItem("이번달 이벤트"));
+        notice_list.setAdapter(noticeTitleAdapter);
+        notice_list.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        notice_list.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                slideHandler.removeCallbacks(slideRunnable);
+                slideHandler.postDelayed(slideRunnable, 3000);
+            }
+        });
+
 
         View.OnClickListener onClickListener = new View.OnClickListener(){
             @Override
@@ -392,6 +419,15 @@ public class MainActivity2 extends AppCompatActivity {
         passedDialog.setCancelable(false);
         passedDialog.show();
     }
+
+    public final Runnable slideRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (currentNum==1)
+                currentNum=-1;
+            notice_list.setCurrentItem(++currentNum,true);
+        }
+    };
 
     @Override
     protected void onStop() {
