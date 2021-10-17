@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/drawable-xhdpi/border_grey_roundshape.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/activity_create_post.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/activity_custom_list.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/activity_custom_list2.xml" value="0.20108695652173914" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/activity_post_view.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/border_grey_roundshape.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/graph_main.xml" value="0.20108695652173914" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/item_post.xml" value="0.264" />
         <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/item_reservation.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/layout/loading.xml" value="0.20108695652173914" />
+        <entry key="..\:/Users/Yujin/AndroidStudioProjects/covidExerciseAndroid/app/src/main/res/menu/main_menu.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>

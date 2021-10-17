@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.exercise_android1.R;
 
 import org.json.JSONArray;
@@ -37,6 +39,18 @@ public class CustomListActivity extends Activity {
 
         populatePostsList();
 
+        // 당겨서 새로고침
+        SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout2);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getApplicationContext(), GetPostsActivity.class);
+                startActivity(intent);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
         //항목을 클릭하면 해당 글 상세보기 페이지로 데이터를 넘긴 후 이동
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -47,6 +61,7 @@ public class CustomListActivity extends Activity {
                 postViewActivity.putExtra("title", item.getTitle());
                 postViewActivity.putExtra("writer", item.getWriter());
                 postViewActivity.putExtra("content", item.getContent());
+                postViewActivity.putExtra("date", item.getDate());
                 startActivity(postViewActivity);
             }
         });
@@ -75,8 +90,9 @@ public class CustomListActivity extends Activity {
                         String writer = json.getString("writer");
                         String title = json.getString("title");
                         String content = json.getString("content");
+                        String date = json.getString("date");
 
-                        arrayOfPosts.add(new Post(postId, writer, title, content));
+                        arrayOfPosts.add(new Post(postId, writer, title, content, date));
                     }
                 }
 

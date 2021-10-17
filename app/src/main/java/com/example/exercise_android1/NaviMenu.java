@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.exercise_android1.Calendar.CalendarActivity;
 import com.example.exercise_android1.board.GetPostsActivity;
+import com.example.exercise_android1.graph.graph;
 import com.example.exercise_android1.reservation.GetItemActivity;
 import com.example.exercise_android1.reservation.ReservationListActivity;
 import com.nhn.android.naverlogin.OAuthLogin;
@@ -49,10 +50,6 @@ public class NaviMenu extends ContextWrapper{
             startActivity(intent);
         }
 
-        if(id==R.id.menu_health_record){
-            Intent intent=new Intent(context,HealthRecordActivity.class);
-            startActivity(intent);
-        }
         if (id==R.id.menu_myInfo){
             Intent intent = new Intent(context, PointActivity.class);
             startActivity(intent);
@@ -65,8 +62,8 @@ public class NaviMenu extends ContextWrapper{
             Intent intent = new Intent(context, GetItemActivity.class);
             startActivity(intent);
         }
-        if (id==R.id.menu_point) {
-            Intent intent = new Intent(context, PointHistoryActivity.class);
+        if (id==R.id.menu_bmi_record) {
+            Intent intent = new Intent(context, graph.class);
             startActivity(intent);
         }
     }

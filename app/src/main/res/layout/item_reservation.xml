@@ -113,7 +113,7 @@
                 android:layout_below="@+id/traineeTv2"
                 android:layout_marginTop="3dp"
                 android:layout_toEndOf="@+id/dateTv"
-                android:text="신청일"
+                android:text="2021/10/04"
                 android:textColor="#323232"
                 android:textSize="15dp" />
 

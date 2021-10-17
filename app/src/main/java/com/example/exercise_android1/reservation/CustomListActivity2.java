@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.exercise_android1.R;
+import com.example.exercise_android1.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +26,9 @@ public class CustomListActivity2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_list2);
+
+        TextView title = findViewById(R.id.classList_tv);
+        title.setText(User.name + "님의 클래스");
 
         // 당겨서 새로고침
         SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
