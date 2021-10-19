@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+ //10.19 푸쉬
 public class PointActivity extends AppCompatActivity {
 
     private final String TAG = "PointActivity";

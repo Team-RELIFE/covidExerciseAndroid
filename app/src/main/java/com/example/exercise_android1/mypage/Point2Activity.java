@@ -1,4 +1,4 @@
-//package com.example.exercise_android1;
+//package com.example.exercise_android1.mypage;
 //
 //import android.annotation.SuppressLint;
 //import android.content.Context;
