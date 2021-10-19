@@ -9,8 +9,8 @@ import android.widget.Toast;
 import com.example.exercise_android1.Calendar.CalendarActivity;
 import com.example.exercise_android1.board.GetPostsActivity;
 import com.example.exercise_android1.graph.graph;
+import com.example.exercise_android1.mypage.PointActivity;
 import com.example.exercise_android1.reservation.GetItemActivity;
-import com.example.exercise_android1.reservation.ReservationListActivity;
 import com.nhn.android.naverlogin.OAuthLogin;
 
 /**내비게이션 메뉴 선택 클래스

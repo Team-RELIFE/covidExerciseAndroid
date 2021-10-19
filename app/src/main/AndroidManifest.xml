@@ -78,8 +78,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PointActivity" />
-        <activity android:name=".PointHistoryActivity" />
+        <activity android:name=".mypage.PointActivity" />
+        <activity android:name=".mypage.PointHistoryActivity" />
         <activity android:name=".DBTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
