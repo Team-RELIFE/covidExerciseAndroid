@@ -61,38 +61,38 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/photo2" />
 
-            <EditText
-                android:id="@+id/nickname"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+            <TextView
+                android:id="@+id/nicknameText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/galleryBtn"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:hint="닉네임을 입력하세요."
                 android:scaleType="fitCenter"
-                android:text="닉네임"
-                android:textSize="17dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/userEmail"
+                android:id="@+id/EmailText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/nickname"
+                android:layout_height ="wrap_content"
+                android:layout_below="@+id/nicknameText"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:scaleType="fitCenter"
-                android:text="capstone@cbnu.ac.kr"
-                android:textSize="18dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
             //사용자가 가입한 이메일이 뜨도록
 
+
+
             //포인트 전체 레이아웃 수정
 
-            <androidx.appcompat.widget.Toolbar
+            <RelativeLayout
                 android:id="@+id/pointlayout"
                 android:layout_width="400dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/userEmail"
+                android:layout_below="@+id/EmailText"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
@@ -100,40 +100,67 @@
                 android:gravity="clip_horizontal">
 
                 <TextView
-                    android:id="@+id/pointText1"
+                    android:id="@+id/pointMainText"
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"/>
+
+                <ImageButton
+                    android:id="@+id/pointbutton"
+                    android:layout_width="20dp"
+                    android:layout_height="40dp"
+                    android:gravity="end"
+                    android:layout_toRightOf="@+id/pointMainText"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/moreview" />
+
+                <TextView
+                    android:id="@+id/point1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="보유 포인트"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/pointMainText"/>
+
+                <TextView
+                    android:id="@+id/pointText1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/point1"
+                    android:text=""/>
+
+                <TextView
+                    android:id="@+id/point2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/point1"
+                    android:layout_below="@+id/pointMainText"
+                    android:layout_marginLeft="112dp"
+                    android:layout_marginTop="5dp"
+                    android:text="누적 포인트"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/pointText2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/userpoint"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_below="@+id/point2"
+                    android:layout_marginLeft="112dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/point1"
                     android:gravity="clip_horizontal"
                     android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/pointText1"/>
-
-
-                <TextView
-                    android:id="@+id/point"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/pointText2"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="clip_horizontal"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </androidx.appcompat.widget.Toolbar>
+                    android:text=""/>
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/timeTable"
@@ -189,6 +216,8 @@
                 android:background="#00FF0000"
                 android:text="회원탈퇴"
                 android:textColor="#c0c0c0" />
+
+
 
 
         </RelativeLayout>

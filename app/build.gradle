@@ -58,6 +58,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation "androidx.room:room-runtime:2.3.0"
     annotationProcessor "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     // CacheWebView Library
     implementation 'ren.yale.android:cachewebviewlib:2.1.8'

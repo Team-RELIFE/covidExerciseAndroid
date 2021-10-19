@@ -17,8 +17,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -36,6 +39,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.exercise_android1.Calendar.AlarmReceiver;
 import com.example.exercise_android1.Calendar.CalendarActivity;
@@ -95,6 +99,12 @@ public class MainActivity2 extends AppCompatActivity {
    AlarmManager alarmManager;
    int mRequestCode;
 
+   //공지사항
+    ViewPager2 notice_list;
+    NoticeTitleAdapter noticeTitleAdapter;
+    Handler slideHandler;
+    int currentNum=0;
+
    //시간 지난 일정 지우기
     long now = System.currentTimeMillis(); //현재시간 가져옴
     Date dateNow = new Date(now); // Date 형식으로 convert
@@ -108,6 +118,9 @@ public class MainActivity2 extends AppCompatActivity {
     RecyclerView passedSchedulesRcView;
     AlertDialog passedDialog;
     Date date1;
+
+    //이벤트 버튼
+    ImageButton evBtn1, evBtn2, evBtn3, evBtn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,9 +150,17 @@ public class MainActivity2 extends AppCompatActivity {
         schedule_addBtn.setColorFilter(Color.parseColor("#7FCCEF"));
         passedSchedulesBtn=(Button)findViewById(R.id.passed_schedules);
 
+        notice_list=(ViewPager2)findViewById(R.id.nt_viewpager);
+        slideHandler=new Handler(Looper.getMainLooper());
+
         dbHelper=new DBHelper(nContext,dbName,null,dbVersion,sMonth,sDay);
         db=dbHelper.getReadableDatabase();
         dbHelper.onCreate(db);
+
+        evBtn1 = (ImageButton)findViewById(R.id.eventImg_1);
+        evBtn2 = (ImageButton)findViewById(R.id.eventImg_2);
+        evBtn3 = (ImageButton)findViewById(R.id.eventImg_3);
+        evBtn4 = (ImageButton)findViewById(R.id.eventImg_5);
 
         /*액션바 대신 툴바 사용*/
         setSupportActionBar(toolbar);
@@ -157,6 +178,21 @@ public class MainActivity2 extends AppCompatActivity {
             header_userName.setText("Guest 님");
         }
 
+        noticeTitleAdapter=new NoticeTitleAdapter(nContext);
+        noticeTitleAdapter.addItem(new NoticeTitleItem("9월 업데이트"));
+        noticeTitleAdapter.addItem(new NoticeTitleItem("이번달 이벤트"));
+        notice_list.setAdapter(noticeTitleAdapter);
+        notice_list.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        notice_list.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                slideHandler.removeCallbacks(slideRunnable);
+                slideHandler.postDelayed(slideRunnable, 3000);
+            }
+        });
+
+
         View.OnClickListener onClickListener = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -170,12 +206,37 @@ public class MainActivity2 extends AppCompatActivity {
                         break;
                     case R.id.passed_schedules:
                         showPassedSchedules();
+                        break;
+                    case R.id.eventImg_1:
+                        Intent evIntent1 = new Intent(Intent.ACTION_VIEW);
+                        evIntent1.setData(Uri.parse("https://dshop.dietshin.com/event/monthly_202110.asp"));
+                        startActivity(evIntent1);
+                        break;
+                    case R.id.eventImg_2:
+                        Intent evIntent2 = new Intent(Intent.ACTION_VIEW);
+                        evIntent2.setData(Uri.parse("https://dshop.dietshin.com/event/appreview.asp"));
+                        startActivity(evIntent2);
+                        break;
+                    case R.id.eventImg_3:
+                        Intent evIntent3 = new Intent(Intent.ACTION_VIEW);
+                        evIntent3.setData(Uri.parse("https://dshop.dietshin.com/event/benefit.asp"));
+                        startActivity(evIntent3);
+                        break;
+                    case R.id.eventImg_5:
+                        Intent evIntent5 = new Intent(Intent.ACTION_VIEW);
+                        evIntent5.setData(Uri.parse("https://dshop.dietshin.com/event/coupon_zone.asp"));
+                        startActivity(evIntent5);
+                        break;
                 }
             }
         };
         menuIcon.setOnClickListener(onClickListener);
         schedule_addBtn.setOnClickListener(onClickListener);
         passedSchedulesBtn.setOnClickListener(onClickListener);
+        evBtn1.setOnClickListener(onClickListener);
+        evBtn2.setOnClickListener(onClickListener);
+        evBtn3.setOnClickListener(onClickListener);
+        evBtn4.setOnClickListener(onClickListener);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -392,6 +453,15 @@ public class MainActivity2 extends AppCompatActivity {
         passedDialog.setCancelable(false);
         passedDialog.show();
     }
+
+    public final Runnable slideRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (currentNum==1)
+                currentNum=-1;
+            notice_list.setCurrentItem(++currentNum,true);
+        }
+    };
 
     @Override
     protected void onStop() {
