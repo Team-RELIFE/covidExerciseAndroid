@@ -1,23 +1,19 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.mypage;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.nhn.android.naverlogin.OAuthLogin;
-import com.nhn.android.naverlogin.OAuthLoginHandler;
-import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+import com.example.exercise_android1.R;
+import com.example.exercise_android1.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,10 +28,13 @@ public class PointActivity extends AppCompatActivity {
 
     private final String TAG = "PointActivity";
 
+    TextView nicknameText;
+    TextView EmailText;
+    TextView pointMainText;
     TextView pointText1;
     TextView pointText2;
-    TextView point; //누적 포인트
-    TextView userpoint;
+    ImageButton pointbutton;
+
     User currentUser = new User().getCurrentUser();
 
     String userid = "";
@@ -46,28 +45,40 @@ public class PointActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        nicknameText = (TextView) findViewById(R.id.nicknameText);
+        EmailText = (TextView) findViewById(R.id.EmailText);
+        pointMainText = (TextView) findViewById(R.id.pointMainText);
         pointText1 = (TextView) findViewById(R.id.pointText1);
-        userpoint = (TextView) findViewById(R.id.userpoint); //보유 포인트
         pointText2 = (TextView) findViewById(R.id.pointText2);
-        point = (TextView) findViewById(R.id.point); //누적 포인트
+        pointbutton= (ImageButton) findViewById(R.id.pointbutton); /*포인트리스트로 이동*/
+
 
         if (currentUser.id != null) {
             userid = currentUser.id;
-            pointText1.setText(currentUser.name+"님의 보유 포인트");
-            ConnectServer();
-        }
-
-        if (currentUser.id != null) {
-            userid = currentUser.id;
-            pointText2.setText(currentUser.name+"님의 누적 포인트");
+            pointMainText.setText(currentUser.name+"님의 포인트");
+            nicknameText.setText(currentUser.name+"");
+            EmailText.setText(currentUser.id+"");
             ConnectServer();
         }
 
         else {
-            point.setText("로그인이 필요한 서비스입니다.");
+            pointMainText.setText("로그인이 필요한 서비스입니다.");
+            nicknameText.setText("로그인이 필요한 서비스입니다.");
+            EmailText.setText("로그인이 필요한 서비스입니다.");
         }
     }
 
+    View.OnClickListener onClickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.pointbutton:
+                    Intent intent = new Intent(PointActivity.this, PointHistoryActivity.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    };
 
     private void ConnectServer(){
 
@@ -107,15 +118,13 @@ public class PointActivity extends AppCompatActivity {
                                 json = jArr.getJSONObject(i);
 
                                 userid = json.getString("id");
-                                Double u_point = json.getDouble("point");
-                                Double u_userpoint = json.getDouble("userpoint");
-                                String date = json.getString("date");
+                                Double sumpoint = json.getDouble("sumpoint");
 
                                 /*StringBuilder sql = new StringBuilder();
-                                sql.append("SELECT userId ,sum(point) FROM point GROUP BY userId"); */
+                                sql.append("SELECT userId ,sum(point) FROM capstone.point GROUP BY userId"); */
 
-                                userpoint.append("\n보유 포인트 : " + u_userpoint +"\n\n");
-                                point.append("\n누적 포인트 : " + u_point + "\n\n");
+                                pointText1.append(""+ sumpoint);
+                                pointText2.append("" + sumpoint);
 
                             }
                         }

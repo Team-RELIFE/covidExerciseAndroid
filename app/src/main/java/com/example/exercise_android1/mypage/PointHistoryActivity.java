@@ -1,10 +1,8 @@
-package com.example.exercise_android1;
+package com.example.exercise_android1.mypage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.exercise_android1.NaviMenu;
+import com.example.exercise_android1.R;
+import com.example.exercise_android1.User;
 import com.google.android.material.navigation.NavigationView;
 import com.nhn.android.naverlogin.OAuthLogin;
 
