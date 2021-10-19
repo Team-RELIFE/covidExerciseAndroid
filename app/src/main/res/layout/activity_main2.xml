@@ -164,6 +164,73 @@
             app:layout_constraintEnd_toEndOf="@id/notice_shape"
             tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/event_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="EVENT"
+            android:textColor="@color/main_blue"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@id/notice_shape"
+            app:layout_constraintStart_toStartOf="@id/bell_img"
+            app:layout_constraintTop_toBottomOf="@+id/schedulesOfToday_recyclerView"
+            tools:ignore="MissingConstraints" />
+
+        <ScrollView
+            android:id="@+id/scrollview1"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:background="#7FCCEF"
+            app:layout_constraintTop_toBottomOf="@+id/event_text"
+            app:layout_constraintStart_toStartOf="@+id/schedulesOfToday_recyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/schedulesOfToday_recyclerView"
+            tools:ignore="MissingConstraints">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="102dp"
+                    android:id="@+id/eventImg_1"
+                    android:src="@drawable/event7"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:id="@+id/eventImg_2"
+                    android:src="@drawable/event5"
+                    app:layout_constraintTop_toBottomOf="@+id/eventImg_1"
+                    android:backgroundTint="#00ffffff"
+                    android:scaleType="fitCenter"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="123dp"
+                    android:id="@+id/eventImg_3"
+                    android:src="@drawable/event4"
+                    app:layout_constraintTop_toBottomOf="@+id/eventImg_2"
+                    android:backgroundTint="#00ffffff"
+                    android:scaleType="fitCenter"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="108dp"
+                    android:id="@+id/eventImg_5"
+                    android:src="@drawable/event8"
+                    app:layout_constraintTop_toBottomOf="@+id/eventImg_3"
+                    android:backgroundTint="#00ffffff"
+                    android:scaleType="fitCenter"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

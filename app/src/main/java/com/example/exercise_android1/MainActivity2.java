@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -118,6 +119,9 @@ public class MainActivity2 extends AppCompatActivity {
     AlertDialog passedDialog;
     Date date1;
 
+    //이벤트 버튼
+    ImageButton evBtn1, evBtn2, evBtn3, evBtn4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,6 +156,11 @@ public class MainActivity2 extends AppCompatActivity {
         dbHelper=new DBHelper(nContext,dbName,null,dbVersion,sMonth,sDay);
         db=dbHelper.getReadableDatabase();
         dbHelper.onCreate(db);
+
+        evBtn1 = (ImageButton)findViewById(R.id.eventImg_1);
+        evBtn2 = (ImageButton)findViewById(R.id.eventImg_2);
+        evBtn3 = (ImageButton)findViewById(R.id.eventImg_3);
+        evBtn4 = (ImageButton)findViewById(R.id.eventImg_5);
 
         /*액션바 대신 툴바 사용*/
         setSupportActionBar(toolbar);
@@ -197,12 +206,37 @@ public class MainActivity2 extends AppCompatActivity {
                         break;
                     case R.id.passed_schedules:
                         showPassedSchedules();
+                        break;
+                    case R.id.eventImg_1:
+                        Intent evIntent1 = new Intent(Intent.ACTION_VIEW);
+                        evIntent1.setData(Uri.parse("https://dshop.dietshin.com/event/monthly_202110.asp"));
+                        startActivity(evIntent1);
+                        break;
+                    case R.id.eventImg_2:
+                        Intent evIntent2 = new Intent(Intent.ACTION_VIEW);
+                        evIntent2.setData(Uri.parse("https://dshop.dietshin.com/event/appreview.asp"));
+                        startActivity(evIntent2);
+                        break;
+                    case R.id.eventImg_3:
+                        Intent evIntent3 = new Intent(Intent.ACTION_VIEW);
+                        evIntent3.setData(Uri.parse("https://dshop.dietshin.com/event/benefit.asp"));
+                        startActivity(evIntent3);
+                        break;
+                    case R.id.eventImg_5:
+                        Intent evIntent5 = new Intent(Intent.ACTION_VIEW);
+                        evIntent5.setData(Uri.parse("https://dshop.dietshin.com/event/coupon_zone.asp"));
+                        startActivity(evIntent5);
+                        break;
                 }
             }
         };
         menuIcon.setOnClickListener(onClickListener);
         schedule_addBtn.setOnClickListener(onClickListener);
         passedSchedulesBtn.setOnClickListener(onClickListener);
+        evBtn1.setOnClickListener(onClickListener);
+        evBtn2.setOnClickListener(onClickListener);
+        evBtn3.setOnClickListener(onClickListener);
+        evBtn4.setOnClickListener(onClickListener);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
