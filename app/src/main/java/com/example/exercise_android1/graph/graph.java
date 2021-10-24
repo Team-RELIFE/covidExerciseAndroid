@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +34,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 
 public class graph extends AppCompatActivity {
@@ -77,6 +80,7 @@ public class graph extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
 
         calendarView = findViewById(R.id.calendarView);
+        calendarView.setMaxDate(System.currentTimeMillis());
 
         bar_chart = (HorizontalBarChart) findViewById(R.id.bar_chart);
         BarDataSet barDataSet = new BarDataSet(dataValues(), "");
@@ -165,6 +169,7 @@ public class graph extends AppCompatActivity {
                 day = date.getTime();
 
                 final EditText etEdit = new EditText(graph.this);
+                etEdit.setFilters(new InputFilter[]{filterNumAndComma});
                 AlertDialog.Builder dialog = new AlertDialog.Builder(graph.this);
                 dialog.setTitle("입력");
                 dialog.setView(etEdit);
@@ -318,4 +323,16 @@ public class graph extends AppCompatActivity {
 
         return dataVals;
     }
+
+    /** 몸무게 입력창 필터링 **/
+    public InputFilter filterNumAndComma = new InputFilter() {
+        public CharSequence filter(CharSequence source, int start, int end,
+                                   Spanned dest, int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[.0-9]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
 }
