@@ -1,6 +1,7 @@
 package com.example.exercise_android1;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -49,8 +50,13 @@ import com.example.exercise_android1.TodaySchedules.PassedScheduleAdapter;
 import com.example.exercise_android1.TodaySchedules.TodayScheduleAdapter;
 import com.example.exercise_android1.TodaySchedules.TodayScheduleItems;
 import com.example.exercise_android1.TodaySchedules.deleteController;
+import com.example.exercise_android1.board.GetPostsActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -104,6 +110,7 @@ public class MainActivity2 extends AppCompatActivity {
     NoticeTitleAdapter noticeTitleAdapter;
     Handler slideHandler;
     int currentNum=0;
+    ArrayList<NoticeTitleItem> notice_array;
 
    //시간 지난 일정 지우기
     long now = System.currentTimeMillis(); //현재시간 가져옴
@@ -177,6 +184,40 @@ public class MainActivity2 extends AppCompatActivity {
         } else {
             header_userName.setText("Guest 님");
         }
+
+/* 2 */
+//        Intent intent = new Intent(nContext, GetPostsActivity2.class);
+//        startActivityForResult(intent, 1000);
+
+//        try {
+//            GetPostsActivity2 getPostsActivity2 = new GetPostsActivity2();
+//            ((GetPostsActivity2)GetPostsActivity2.context).connectDB(); // -> null pointer error
+//            // MainActivity2에서 직접 connectDB 구현
+//            Intent intent = getIntent();
+//            String titles = intent.getStringExtra("titles");
+//            ArrayList<NoticeTitleItem> titleItems = new ArrayList<NoticeTitleItem>();
+//        }catch (NullPointerException e){
+//            Log.i("MainActivity2", "error");
+//        }
+        //System.out.println(titles);
+
+//        JSONArray jArr = null;
+//        try {
+//            jArr = new JSONArray(titles);
+//            JSONObject json = new JSONObject();
+//
+//            for (int i=0; i<jArr.length();i++) {
+//                json = jArr.getJSONObject(i);
+//
+//                String title = json.getString("title");
+//
+//                titleItems.add(new NoticeTitleItem(title));
+//
+//                System.out.println(title);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         noticeTitleAdapter=new NoticeTitleAdapter(nContext);
         noticeTitleAdapter.addItem(new NoticeTitleItem("9월 업데이트"));
@@ -263,6 +304,19 @@ public class MainActivity2 extends AppCompatActivity {
             finishAffinity(); /*어느 액티비티에서든 모든 부모 액티비티 종료*/
         }
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 1000){
+//            if (resultCode == RESULT_OK){
+//                String title = data.getStringExtra("titles");
+//                System.out.print(title);
+//            }else{
+//
+//            }
+//        }
+//    }
 
     public void showTodaySchedule(){
         Cursor c=db.rawQuery("SELECT * FROM"+" "+tableName,null);

@@ -40,7 +40,22 @@
                 <data android:scheme="https://tistory2.page.link" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".MainActivity2">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="http" />
+                <data
+                    android:host="tistory2.page.link/link"
+                    android:scheme="https" />
+                <data android:scheme="https://tistory2.page.link" />
+            </intent-filter>
+        </activity>
         <activity android:name=".JoinActivity2" />
 
         <service
@@ -175,6 +190,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".reservation.GetItemActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".GetPostsActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
