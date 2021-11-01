@@ -26,8 +26,10 @@ public class graphDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE DATE, WEIGHT FLOAT)");
+        //db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE DATE, WEIGHT FLOAT)");
         db.execSQL("create table " + TABLE_NAME2 + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, HEIGHT FLOAT, WEIGHT FLOAT)");
+        //여기만 if not exist ~ 이렇게 고쳐주세요! DBHelper 문 참고하시면 됩니다!!
+        //String sql="CREATE TABLE if not exists"+" "+"schedule"+tableName+"("+TITLE+" TEXT,"+CONTENT+" TEXT,"+ALARM+" TEXT, "+ALARM_REQUEST+" TEXT);";
     }
 
     @Override

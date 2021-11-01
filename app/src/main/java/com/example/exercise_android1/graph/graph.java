@@ -76,6 +76,7 @@ public class graph extends AppCompatActivity {
         graphView.addSeries(series);
 
         db = graphdbHelper.getWritableDatabase();
+        graphdbHelper.onCreate(db); // -> 수정한 부분
 
         button = (Button) findViewById(R.id.button);
 

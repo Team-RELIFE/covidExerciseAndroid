@@ -93,7 +93,7 @@
             android:textSize="17dp"
             tools:ignore="MissingConstraints" />
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main1_relative1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,56 +102,16 @@
             tools:ignore="MissingConstraints">
 
             <Button
-                android:id="@+id/emailSearchBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00ff0000"
-                android:text="아이디 찾기"
-                android:textColor="@color/white"
-                android:layout_toLeftOf="@+id/mainText2"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/mainText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" | "
-                android:layout_toLeftOf="@+id/passSearchBtn"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:layout_marginTop="19dp"/>
-
-            <Button
-                android:id="@+id/passSearchBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00ff0000"
-                android:text="비밀번호 찾기"
-                android:layout_centerInParent="true"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/mainText4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                android:text=" |"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:layout_toRightOf="@+id/passSearchBtn"
-                android:layout_centerInParent="true"/>
-
-            <Button
                 android:id="@+id/JoinBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00ff0000"
                 android:text="회원가입"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/mainText4"/>
-        </RelativeLayout>
+                android:layout_marginTop="10dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/maintext5"
