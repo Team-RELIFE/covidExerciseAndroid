@@ -90,8 +90,8 @@
 
             <RelativeLayout
                 android:id="@+id/pointlayout"
-                android:layout_width="400dp"
-                android:layout_height="100dp"
+                android:layout_width="380dp"
+                android:layout_height="350dp"
                 android:layout_below="@+id/EmailText"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
@@ -122,20 +122,42 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="보유 포인트"
+                    android:text="적립 날짜"
                     android:textStyle="bold"
                     android:layout_below="@+id/pointMainText"/>
 
                 <TextView
-                    android:id="@+id/pointText1"
+                    android:id="@+id/pointdate1"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:gravity="clip_horizontal"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     android:layout_below="@+id/point1"
+                    android:text=""/>
+                <TextView
+                    android:id="@+id/pointdate2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/pointdate1"
+                    android:text=""/>
+                <TextView
+                    android:id="@+id/pointdate3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/pointdate2"
                     android:text=""/>
 
                 <TextView
@@ -146,11 +168,11 @@
                     android:layout_below="@+id/pointMainText"
                     android:layout_marginLeft="112dp"
                     android:layout_marginTop="5dp"
-                    android:text="누적 포인트"
+                    android:text="적립 포인트"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/pointText2"
+                    android:id="@+id/pointText1"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/point2"
@@ -158,59 +180,208 @@
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@+id/point1"
                     android:gravity="clip_horizontal"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
+                    android:text=""/>
+
+                <TextView
+                    android:id="@+id/pointText2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pointText1"
+                    android:layout_marginLeft="112dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/point1"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    android:text=""/>
+                <TextView
+                    android:id="@+id/pointText3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pointText2"
+                    android:layout_marginLeft="112dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/point1"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
                     android:text=""/>
             </RelativeLayout>
+<!--            <ListView-->
+<!--                android:id="@+id/listView"-->
+<!--                android:layout_width="320dp"-->
+<!--                android:layout_height="140dp"-->
+<!--                android:layout_below="@+id/pointlayout"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/border"-->
+<!--                android:scrollbars="none" />-->
 
-            <TextView
-                android:id="@+id/timeTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pointlayout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="예약된 수업 목록"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+<!--            //수강내역 레이아웃 수정-->
+<!--            <TextView-->
+<!--                android:id="@+id/timeTable"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/pointlayout"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <ListView
-                android:id="@+id/listView1"
-                android:layout_width="320dp"
-                android:layout_height="140dp"
-                android:layout_below="@+id/timeTable"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border"
-                android:scrollbars="none" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/recordbutton"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_below="@+id/pointlayout"-->
+<!--                android:layout_marginLeft="230dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_toRightOf="@+id/timeTable"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:gravity="end"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/add" />-->
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/listView1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="나의 수강내역"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/recordlayout"-->
+<!--                android:layout_width="400dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_below="@+id/timeTable"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:background="@drawable/point_round"-->
+<!--                android:gravity="clip_horizontal"-->
+<!--                android:scrollbars="none" >-->
 
-            <ListView
-                android:id="@+id/listView2"
-                android:layout_width="320dp"
-                android:layout_height="140dp"
-                android:layout_below="@+id/textView2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/border"
-                android:scrollbars="none" />
+<!--                <TextView-->
+<!--                    android:id="@+id/trainer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:text="트레이너"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/TrainerText"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="clip_horizontal"-->
+<!--                    android:textSize="15dp"-->
+<!--                    android:layout_below="@+id/trainer"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/status"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/trainer"-->
+<!--                    android:layout_marginLeft="130dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:text="예약상태"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/statusText"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/status"-->
+<!--                    android:layout_marginLeft="130dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_toRightOf="@+id/trainer"-->
+<!--                    android:gravity="clip_horizontal"-->
+<!--                    android:textSize="15dp"/>-->
+<!--            </RelativeLayout>-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/recordlayout"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:text="나의 수강내역"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/myrecordbutton"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_below="@+id/recordlayout"-->
+<!--                android:layout_marginLeft="230dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_toRightOf="@+id/timeTable"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:gravity="end"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/add" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/myrecordlayout"-->
+<!--                android:layout_width="400dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_below="@+id/textView2"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:background="@drawable/point_round"-->
+<!--                android:gravity="clip_horizontal"-->
+<!--                android:scrollbars="none" >-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/mytrainer"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:text="트레이너"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/myTrainerText"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="clip_horizontal"-->
+<!--                    android:textSize="15dp"-->
+<!--                    android:layout_below="@+id/mytrainer"-->
+<!--                    android:text=""/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/mystatus"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/mytrainer"-->
+<!--                    android:layout_marginLeft="130dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:text="수강현황"-->
+<!--                    android:textStyle="bold"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/mystatusText"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/mystatus"-->
+<!--                    android:layout_marginLeft="130dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_toRightOf="@+id/mytrainer"-->
+<!--                    android:gravity="clip_horizontal"-->
+<!--                    android:textSize="15dp"-->
+<!--                    android:text=""/>-->
+<!--            </RelativeLayout>-->
+<!-- -->
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="60dp"
                 android:layout_height="20dp"
-                android:layout_below="@+id/listView2"
+                android:layout_below="@+id/pointlayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:background="#00FF0000"
@@ -225,3 +396,4 @@
     </ScrollView>
 
 </RelativeLayout>
+
