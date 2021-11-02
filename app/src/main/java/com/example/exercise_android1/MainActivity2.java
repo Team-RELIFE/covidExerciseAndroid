@@ -126,6 +126,18 @@ public class MainActivity2 extends AppCompatActivity {
     AlertDialog passedDialog;
     Date date1;
 
+    //신규 헬린이
+    ArrayList<newUserData> newuserList=new ArrayList<>();
+    ViewPager2 user_Viewpager;
+    UserSlideAdapter userSlideAdapter;
+    Handler userSlideHandler;
+    int currentNum2=0;
+
+    //트레이너 랭킹
+    ArrayList<RankingData> rankingList=new ArrayList<>();
+    RecyclerView tr_Recyclerview;
+    RankingAdapter rankingAdapter;
+
     //이벤트 버튼
     ImageButton evBtn1, evBtn2, evBtn3, evBtn4;
 
@@ -163,6 +175,12 @@ public class MainActivity2 extends AppCompatActivity {
         dbHelper=new DBHelper(nContext,dbName,null,dbVersion,sMonth,sDay);
         db=dbHelper.getReadableDatabase();
         dbHelper.onCreate(db);
+
+        //신규 헬린이
+        user_Viewpager=(ViewPager2)findViewById(R.id.user_viewpager);
+        userSlideHandler=new Handler(Looper.getMainLooper());
+        //트레이너 랭킹
+        tr_Recyclerview=(RecyclerView)findViewById(R.id.trainer_rangkingView);
 
         evBtn1 = (ImageButton)findViewById(R.id.eventImg_1);
         evBtn2 = (ImageButton)findViewById(R.id.eventImg_2);
@@ -219,6 +237,24 @@ public class MainActivity2 extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
+        //5 new users
+        newuserList.add(new newUserData(getDrawable(R.drawable.user1),"헬린이1"));
+        newuserList.add(new newUserData(getDrawable(R.drawable.user2),"lala la"));
+        newuserList.add(new newUserData(getDrawable(R.drawable.user3),"체리"));
+        newuserList.add(new newUserData(getDrawable(R.drawable.user4),"헬스왕"));
+        userSlideAdapter=new UserSlideAdapter(this, newuserList);
+        user_Viewpager.setAdapter(userSlideAdapter);
+        user_Viewpager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+
+        user_Viewpager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() { //auto slide: 3 seconds
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                userSlideHandler.removeCallbacks(userslideRunnable);
+                userSlideHandler.postDelayed(userslideRunnable, 3000);
+            }
+        });
+
         noticeTitleAdapter=new NoticeTitleAdapter(nContext);
         noticeTitleAdapter.addItem(new NoticeTitleItem("9월 업데이트"));
         noticeTitleAdapter.addItem(new NoticeTitleItem("이번달 이벤트"));
@@ -232,6 +268,15 @@ public class MainActivity2 extends AppCompatActivity {
                 slideHandler.postDelayed(slideRunnable, 3000);
             }
         });
+
+        tr_Recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        rankingList.add(new RankingData(getDrawable(R.drawable.girl),getDrawable(R.drawable.number1),"nanana"));
+        rankingList.add(new RankingData(getDrawable(R.drawable.girl2),getDrawable(R.drawable.number2),"메로나"));
+        rankingList.add(new RankingData(getDrawable(R.drawable.son),getDrawable(R.drawable.number3),"버거킹"));
+        rankingAdapter=new RankingAdapter(rankingList, this);
+
+        tr_Recyclerview.setAdapter(rankingAdapter);
+        rankingAdapter.notifyDataSetChanged();
 
 
         View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -514,6 +559,15 @@ public class MainActivity2 extends AppCompatActivity {
             if (currentNum==1)
                 currentNum=-1;
             notice_list.setCurrentItem(++currentNum,true);
+        }
+    };
+
+    public final Runnable userslideRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (currentNum2==3)
+                currentNum2=-1;
+            user_Viewpager.setCurrentItem(++currentNum2, true);
         }
     };
 
