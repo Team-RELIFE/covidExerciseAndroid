@@ -31,8 +31,10 @@ public class PointActivity extends AppCompatActivity {
     TextView nicknameText;
     TextView EmailText;
     TextView pointMainText;
+    TextView pointdate1;
     TextView pointText1;
     TextView pointText2;
+    TextView pointText3;
     ImageButton pointbutton;
 
     User currentUser = new User().getCurrentUser();
@@ -48,9 +50,12 @@ public class PointActivity extends AppCompatActivity {
         nicknameText = (TextView) findViewById(R.id.nicknameText);
         EmailText = (TextView) findViewById(R.id.EmailText);
         pointMainText = (TextView) findViewById(R.id.pointMainText);
+        pointdate1 = (TextView) findViewById(R.id.pointdate1);
         pointText1 = (TextView) findViewById(R.id.pointText1);
         pointText2 = (TextView) findViewById(R.id.pointText2);
+        pointText3 = (TextView) findViewById(R.id.pointText3);
         pointbutton= (ImageButton) findViewById(R.id.pointbutton); /*포인트리스트로 이동*/
+
 
 
         if (currentUser.id != null) {
@@ -58,6 +63,7 @@ public class PointActivity extends AppCompatActivity {
             pointMainText.setText(currentUser.name+"님의 포인트");
             nicknameText.setText(currentUser.name+"");
             EmailText.setText(currentUser.id+"");
+            //timeTable.setText(currentUser.name+"님의 예약 수업");
             ConnectServer();
         }
 
@@ -65,6 +71,7 @@ public class PointActivity extends AppCompatActivity {
             pointMainText.setText("로그인이 필요한 서비스입니다.");
             nicknameText.setText("로그인이 필요한 서비스입니다.");
             EmailText.setText("로그인이 필요한 서비스입니다.");
+            //timeTable.setText("로그인이 필요한 서비스입니다.");
         }
     }
 
@@ -85,6 +92,7 @@ public class PointActivity extends AppCompatActivity {
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
         final String SIGNIN_URL = getString(R.string.db_server)+"point.jsp";  //jsp 파일 연동
         final String urlSuffix = "?id=" + userid;
+
         //Log.d("urlSuffix", urlSuffix);
 
         class HoldPoint extends AsyncTask<String, Void, String> {
@@ -118,13 +126,18 @@ public class PointActivity extends AppCompatActivity {
                                 json = jArr.getJSONObject(i);
 
                                 userid = json.getString("id");
+                                String date = json.getString("date");
+                                Double point = json.getDouble("point");
+                                Double usepoint = json.getDouble("usepoint");
                                 Double sumpoint = json.getDouble("sumpoint");
 
                                 /*StringBuilder sql = new StringBuilder();
                                 sql.append("SELECT userId ,sum(point) FROM capstone.point GROUP BY userId"); */
 
-                                pointText1.append(""+ sumpoint);
-                                pointText2.append("" + sumpoint);
+                                pointdate1.append(""+ date);
+                                pointText1.append(""+ point);
+                                pointText2.append(""+ usepoint);
+                                pointText3.append("" + sumpoint);
 
                             }
                         }
@@ -152,7 +165,6 @@ public class PointActivity extends AppCompatActivity {
                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                     conn.setDoInput(true); //input을 사용하도록 설정 (default : true)
                     conn.setDoOutput(true); //output을 사용하도록 설정 (default : false)
-
 
                     //strParams에 데이터를 담아 서버로 보냄
                     String strParams = "id=" + userid;
