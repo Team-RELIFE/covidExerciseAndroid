@@ -1,7 +1,5 @@
 package com.example.exercise_android1.graph;
 
-//통계 임시 패키지 입니다
-
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -23,17 +21,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.exercise_android1.R;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 
@@ -42,10 +44,7 @@ public class graph extends AppCompatActivity {
     public CalendarView calendarView;
 
     String value, bmi_info;
-    GraphView graphView;
-    LineGraphSeries<DataPoint> series;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("MM.dd");
     Button button;
 
     Date date;
@@ -55,6 +54,12 @@ public class graph extends AppCompatActivity {
     graphDBHelper graphdbHelper;
     SQLiteDatabase db;
     Cursor temp;
+
+    LineChart lineChart;
+    LineDataSet linedataset = new LineDataSet(null ,null);
+    LineData lineData;
+    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+    ArrayList<Entry> dataEntry = new ArrayList<>();
 
     HorizontalBarChart bar_chart;
     int[] colorArray = new int[]{Color.GRAY, Color.CYAN, Color.GREEN, Color.YELLOW, Color.RED};
@@ -69,11 +74,7 @@ public class graph extends AppCompatActivity {
 
         graphdbHelper = new graphDBHelper(graph.this);
 
-        graphView = (GraphView) findViewById(R.id.chart);
-        graphView.getViewport().setScrollable(true);
-
-        series = new LineGraphSeries<DataPoint>();
-        graphView.addSeries(series);
+        lineChart = (LineChart) findViewById(R.id.chart);
 
         db = graphdbHelper.getWritableDatabase();
         graphdbHelper.onCreate(db); // -> 수정한 부분
@@ -178,44 +179,50 @@ public class graph extends AppCompatActivity {
                 dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        //EditText에서 받은 값을 float형으로 변환하여 저장
                         String inputValue = etEdit.getText().toString();
                         value = inputValue;
                         f = Float.parseFloat(value);
 
                         graphdbHelper.updateData(db, day, f);
 
-                        //갱신된 DB를 바탕으로 그래프를 갱신
-                        series.resetData(grabData());
-                        series.setThickness(4); //그래프 선 두께
-                        series.setDrawBackground(true); //그래프 배경색 유무
-                        series.setDrawDataPoints(true); //그래프내 좌표(점)표시 유무
-                        graphView.removeAllSeries();
-                        graphView.addSeries(series);
+                        temp = graphdbHelper.getAllDate();
 
-                        //그래프 X축 데이터 포멧변환
-                        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                            @Override
-                            public String formatLabel(double value, boolean isValueX) {
-                                if (isValueX) {
-                                    return sdf.format(new Date((long) value));
-                                } else {
-                                    return super.formatLabel(value, isValueX);
-                                }
-                            }
-                        });
-                        graphView.getGridLabelRenderer().setHumanRounding(true);
+                        linedataset.setValues(getDataValues());
+                        linedataset.setDrawFilled(true);
+                        linedataset.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+                        dataSets.clear();
+                        dataSets.add(linedataset);
+                        lineData = new LineData(dataSets);
 
-                        //x축에 표시되는 수치를 DB에 저장된 데이터수만큼 표시
-                        temp = db.query("DP_table", null, null, null, null, null, null);
-                        graphView.getGridLabelRenderer().setNumHorizontalLabels(temp.getCount());
-                        graphView.getViewport().setXAxisBoundsManual(true);
-                        graphView.getViewport().setYAxisBoundsManual(true);
-                        graphView.getViewport().setMinY(30);
-                        graphView.getViewport().setMaxY(120);
-                        graphView.getViewport().setScalable(true);  // activate horizontal zooming and scrolling
-                        graphView.getViewport().setScrollable(true);  // activate horizontal scrolling
-                        graphView.getGridLabelRenderer().setHumanRounding(false);
+                        lineChart.clear();
+                        lineChart.setData(lineData);
+                        XAxis xAxis = lineChart.getXAxis();
+                        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                        xAxis.setValueFormatter(new MyXAxisValueFormatter());
+                        xAxis.setDrawLabels(true);
+                        xAxis.setDrawAxisLine(true);
+                        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+                        temp = graphdbHelper.getAllDate();
+                        if(temp.getCount() < 8){
+                            xAxis.setLabelCount(temp.getCount(), true);
+                            lineChart.setVisibleXRangeMaximum(temp.getCount());
+                            xAxis.setSpaceMax(0.05f);
+                        }
+                        else{
+                            xAxis.setLabelCount(8, true);
+                            lineChart.setVisibleXRangeMaximum(7);
+                            lineChart.setHorizontalScrollBarEnabled(true);
+                        }
+                        lineChart.getAxisRight().setDrawAxisLine(false);
+                        lineChart.getAxisRight().setDrawLabels(false);
+                        lineChart.setScaleEnabled(false);
+
+                        lineChart.setHorizontalScrollBarEnabled(true);
+                        lineChart.setHorizontalScrollBarEnabled(true);
+                        lineChart.getDescription().setEnabled(false);
+                        lineChart.getLegend().setEnabled(false);
+                        lineChart.invalidate();
 
                     }
                 });
@@ -262,59 +269,44 @@ public class graph extends AppCompatActivity {
         /** 앱실행시 DB에 존재하는 데이터를 참조하여 그래프에 데이터추가 **/
         res = graphdbHelper.getAllDate();
         if(res.getCount() == 0){
-            graphView.addSeries(series);
+            f = 0;
         }
         else{
-            series.resetData(grabData());
-            graphView.removeAllSeries();
-            graphView.addSeries(series);
-            series.setThickness(4); //그래프 선 두께
-            series.setDrawBackground(true); //그래프 배경색 유무
-            series.setDrawDataPoints(true); //그래프 데이터 점표시 유무
-            temp = db.query("DP_table", null, null, null, null, null, null);
-            graphView.getGridLabelRenderer().setNumHorizontalLabels(temp.getCount());
-//            graphView.getGridLabelRenderer().setNumHorizontalLabels(5);
-            graphView.setHorizontalScrollBarEnabled(true);
-            graphView.getViewport().setScrollable(true);  // activate horizontal scrolling
-            graphView.getViewport().setScrollableY(true);
-            graphView.getViewport().setXAxisBoundsManual(true);
-            graphView.getViewport().setYAxisBoundsManual(true);
-            graphView.getViewport().setMinY(30);
-            graphView.getViewport().setMaxY(120);
-            graphView.getGridLabelRenderer().setHumanRounding(false);
+            linedataset.setValues(getDataValues());
+            linedataset.setDrawFilled(true);
+            linedataset.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            dataSets.clear();
+            dataSets.add(linedataset);
+            lineData = new LineData(dataSets);
 
-        }
-
-        /** 그래프 x축의 날짜 데이터 포멧변환 **/
-        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return sdf.format(new Date((long) value));
-                } else {
-                    return super.formatLabel(value, isValueX);
-                }
+            lineChart.clear();
+            lineChart.setData(lineData);
+            XAxis xAxis = lineChart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setValueFormatter(new MyXAxisValueFormatter());
+            xAxis.setDrawLabels(true);
+            xAxis.setDrawAxisLine(true);
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            if(res.getCount() < 8){
+                xAxis.setLabelCount(res.getCount(), true);
+                lineChart.setVisibleXRangeMaximum(res.getCount());
+                xAxis.setSpaceMax(0.05f);
             }
-        });
-    }
+            else{
+                xAxis.setLabelCount(8, true);
+                lineChart.setVisibleXRangeMaximum(7);
+                lineChart.setHorizontalScrollBarEnabled(true);
+            }
+            lineChart.getAxisRight().setDrawAxisLine(false);
+            lineChart.getAxisRight().setDrawLabels(false);
+            lineChart.setScaleEnabled(false);
 
-    /** 내부 DB에 저장된 데이터를 날짜순으로 읽고 저장하여 그래프에 대입하기 위한 메소드 **/
-    private DataPoint[] grabData(){
-        long date;
-        float f;
+            lineChart.getDescription().setEnabled(false);
+            lineChart.getLegend().setEnabled(false);
+            lineChart.invalidate();
 
-
-        Cursor cursor = db.rawQuery("select * from DP_table order by DATE ASC", null);
-
-        DataPoint[] dataPoints = new DataPoint[cursor.getCount()];
-
-        for(int i = 0; i < cursor.getCount(); i++){
-            cursor.moveToNext();
-            date = cursor.getLong(1);
-            f = cursor.getFloat(2);
-            dataPoints[i] = new DataPoint(date, f);
         }
-        return dataPoints;
+
     }
 
     private ArrayList dataValues(){
@@ -336,4 +328,22 @@ public class graph extends AppCompatActivity {
             return null;
         }
     };
+
+    /** 내부 DB에 저장된 데이터를 날짜순으로 읽고 저장하여 그래프에 대입하기 위한 메소드 **/
+    private ArrayList<Entry> getDataValues(){
+        ArrayList<Entry> dataVals = new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("select * from DP_table order by DATE ASC", null);
+        long date;
+        float f;
+
+        for(int i = 0; i < cursor.getCount(); i++){
+            cursor.moveToNext();
+            date = cursor.getLong(1);
+            f = cursor.getFloat(2);
+            dataVals.add(new Entry(TimeUnit.MILLISECONDS.toDays((long)date), f));
+        }
+
+        return dataVals;
+    }
 }
