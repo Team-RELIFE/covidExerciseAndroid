@@ -31,22 +31,23 @@ import ren.yale.android.cachewebviewlib.WebViewCacheInterceptor;
 import ren.yale.android.cachewebviewlib.WebViewCacheInterceptorInst;
 import ren.yale.android.cachewebviewlib.WebViewCacheInterceptor.Builder;
 
-@Metadata(
-        mv = {1, 1, 16},
-        bv = {1, 0, 3},
-        k = 1,
-        d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0016\u0018\u0000 \u00162\u00020\u0001:\u0001\u0016B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010\u000f\u001a\u00020\u0010H\u0002J\b\u0010\u0011\u001a\u00020\u0010H\u0016J\u0012\u0010\u0012\u001a\u00020\u00102\b\u0010\u0013\u001a\u0004\u0018\u00010\u0014H\u0015J\b\u0010\u0015\u001a\u00020\u0010H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u000e¢\u0006\u0002\n\u0000R\u001a\u0010\u0005\u001a\u00020\u0006X\u0096\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\u0007\u0010\b\"\u0004\b\t\u0010\nR\u0011\u0010\u000b\u001a\u00020\f¢\u0006\b\n\u0000\u001a\u0004\b\r\u0010\u000e¨\u0006\u0017"},
-//        d2 = {"Lcom/example/exercise_android1/pt/PtActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "backPressedTime", "", "url", "", "getUrl", "()Ljava/lang/String;", "setUrl", "(Ljava/lang/String;)V", "webview", "Landroid/webkit/WebView;", "getWebview", "()Landroid/webkit/WebView;", "checkPressedTime", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setCookie", "Companion", "Exercise_android1.app"};
-        d2 = {"Lcom/example/exercise_android1/pt/PtActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "backPressedTime", "", "url", "", "getUrl", "()Ljava/lang/String;", "setUrl", "(Ljava/lang/String;)V", "webview", "Landroid/webkit/WebView;", "getWebview", "()Landroid/webkit/WebView;", "checkPressedTime", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setCookie", "Companion", "Exercise_android1.app"}
-)
+//@Metadata(
+//        mv = {1, 1, 16},
+//        bv = {1, 0, 3},
+//        k = 1,
+//        d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0016\u0018\u0000 \u00162\u00020\u0001:\u0001\u0016B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010\u000f\u001a\u00020\u0010H\u0002J\b\u0010\u0011\u001a\u00020\u0010H\u0016J\u0012\u0010\u0012\u001a\u00020\u00102\b\u0010\u0013\u001a\u0004\u0018\u00010\u0014H\u0015J\b\u0010\u0015\u001a\u00020\u0010H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u000e¢\u0006\u0002\n\u0000R\u001a\u0010\u0005\u001a\u00020\u0006X\u0096\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\u0007\u0010\b\"\u0004\b\t\u0010\nR\u0011\u0010\u000b\u001a\u00020\f¢\u0006\b\n\u0000\u001a\u0004\b\r\u0010\u000e¨\u0006\u0017"},
+////        d2 = {"Lcom/example/exercise_android1/pt/PtActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "backPressedTime", "", "url", "", "getUrl", "()Ljava/lang/String;", "setUrl", "(Ljava/lang/String;)V", "webview", "Landroid/webkit/WebView;", "getWebview", "()Landroid/webkit/WebView;", "checkPressedTime", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setCookie", "Companion", "Exercise_android1.app"};
+//        d2 = {"Lcom/example/exercise_android1/pt/PtActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "backPressedTime", "", "url", "", "getUrl", "()Ljava/lang/String;", "setUrl", "(Ljava/lang/String;)V", "webview", "Landroid/webkit/WebView;", "getWebview", "()Landroid/webkit/WebView;", "checkPressedTime", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setCookie", "Companion", "Exercise_android1.app"}
+//)
 
 
 public class PtActivity extends AppCompatActivity {
+
 //    private long backPressedTime;
     @NotNull
-    public String url = "https://www.naver.com";
+    public String url = "https://pt-app.kr:8100/#//12345";
     @NotNull
-//    private WebView webview = findViewById(R.id.webview);
+    private WebView webview;
     private static final int MAX_BACK_PRESS_INTERVAL = 2000;
     private static final String TAG = "PtActivity";
 //    public static final PtActivity.Companion Companion = new PtActivity.Companion((DefaultConstructorMarker)null);
@@ -61,10 +62,10 @@ public class PtActivity extends AppCompatActivity {
         this.url = var1;
     }
 
-//    @NotNull
-//    public final WebView getWebview() {
-//        return this.webview;
-//    }
+    @NotNull
+    public final WebView getWebview() {
+        return this.webview;
+    }
 
     @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface", "WrongConstant"})
     @RequiresApi(21)
@@ -74,45 +75,45 @@ public class PtActivity extends AppCompatActivity {
 
         WebView webview = findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setLoadWithOverviewMode(true);
-        webview.getSettings().setBuiltInZoomControls(true);
-        webview.getSettings().setAppCacheEnabled(true);
-        webview.getSettings().setDomStorageEnabled(true);
+//        webview.getSettings().setLoadWithOverviewMode(true);
+//        webview.getSettings().setBuiltInZoomControls(true);
+//        webview.getSettings().setAppCacheEnabled(true);
+//        webview.getSettings().setDomStorageEnabled(true);
         webview.addJavascriptInterface(new WebAppInterface((Context)this), "Website");
         webview.setWebViewClient((WebViewClient)(new WebViewClient() { }));
 
-//        WebSettings var10000 = this.webview.getSettings();
+//        WebSettings var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setJavaScriptEnabled(true);
-//        var10000 = this.webview.getSettings();
+//        var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setLoadWithOverviewMode(true);
-//        var10000 = this.webview.getSettings();
+//        var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setUseWideViewPort(true);
-//        this.webview.getSettings().setSupportZoom(true);
-//        var10000 = this.webview.getSettings();
+//        webview.getSettings().setSupportZoom(true);
+//        var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setBuiltInZoomControls(true);
-//        var10000 = this.webview.getSettings();
+//        var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 //        if (VERSION.SDK_INT >= 19) {
-//            var10000 = this.webview.getSettings();
+//            var10000 = webview.getSettings();
 //            Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //            var10000.setCacheMode(1);
 //        } else {
-//            var10000 = this.webview.getSettings();
+//            var10000 = webview.getSettings();
 //            Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //            var10000.setCacheMode(-1);
 //        }
 
-//        this.webview.getSettings().setAppCacheEnabled(true);
-//        var10000 = this.webview.getSettings();
+//        webview.getSettings().setAppCacheEnabled(true);
+//        var10000 = webview.getSettings();
 //        Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //        var10000.setDomStorageEnabled(true);
-//        this.webview.addJavascriptInterface(new WebAppInterface((Context)this), "Website");
-//        this.webview.setWebViewClient((WebViewClient)(new WebViewClient() {
+//        webview.addJavascriptInterface(new WebAppInterface((Context)this), "Website");
+//        webview.setWebViewClient((WebViewClient)(new WebViewClient() {
 //        }));
 
         Builder builder = new WebViewCacheInterceptor.Builder(this.getApplicationContext());
@@ -126,31 +127,33 @@ public class PtActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Intrinsics.checkExpressionValueIsNotNull(intent, "intent");
 
-//        Bundle bundle = intent.getExtras();
-//        if (bundle != null && bundle.getString("url") != null && !StringsKt.equals(bundle.getString("url"), "", true)) {
-//            String var10001 = bundle.getString("url");
-//            if (var10001 == null) {
-//                Intrinsics.throwNpe();
-//            }
-//
-//            this.setUrl(var10001);
-//        }
+        Bundle bundle = intent.getExtras();
+        if (bundle != null && bundle.getString("url") != null && !StringsKt.equals(bundle.getString("url"), "", true)) {
+            String var10001 = bundle.getString("url");
+            if (var10001 == null) {
+                Intrinsics.throwNpe();
+            }
+
+            this.setUrl(var10001);
+        }
 
         webview.loadUrl(this.getUrl());
-        this.setCookie();
+//        this.setCookie();
+
+
     }
 
-    private void setCookie() {
-        WebView webview = findViewById(R.id.webview);
-        CookieManager cookieManager = CookieManager.getInstance();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webview.getSettings().setMixedContentMode(0);
-            cookieManager.setAcceptThirdPartyCookies(webview, true);
-        } else {
-            cookieManager.setAcceptCookie(true);
-        }
+//    private void setCookie() {
+//        WebView webview = findViewById(R.id.webview);
+//        CookieManager cookieManager = CookieManager.getInstance();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            webview.getSettings().setMixedContentMode(0);
+//            cookieManager.setAcceptThirdPartyCookies(webview, true);
+//        } else {
+//            cookieManager.setAcceptCookie(true);
+//        }
 //        if (VERSION.SDK_INT >= 21) {
-//            WebView webview = findViewById(R.id.webview);
+//            webview = findViewById(R.id.webview);
 //            WebSettings var10000 = webview.getSettings();
 //            Intrinsics.checkExpressionValueIsNotNull(var10000, "webview.settings");
 //            var10000.setMixedContentMode(0);
@@ -158,8 +161,8 @@ public class PtActivity extends AppCompatActivity {
 //        } else {
 //            cookieManager.setAcceptCookie(true);
 //        }
-
-    }
+//
+//    }
 
 //    public void onBackPressed() {
 //        if (StringsKt.equals(this.webview.getOriginalUrl(), this.getUrl(), true)) {

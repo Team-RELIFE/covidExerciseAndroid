@@ -17,7 +17,7 @@ public class ProcessReservation extends AppCompatActivity {
     protected void ConnectServer(int id, int reply){
 
         System.out.println("예약처리 : " + id);
-        final String SIGNIN_URL = "http://192.168.219.100:8080/" + "processReservation.jsp";
+        final String SIGNIN_URL = "http://pt-app.kr:8080/" + "processReservation.jsp";
         final String urlSuffix = "?id=" + id + "&reply=" + reply;
         //Log.d("urlSuffix", urlSuffix);
 

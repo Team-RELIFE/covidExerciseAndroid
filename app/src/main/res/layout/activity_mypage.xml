@@ -137,28 +137,28 @@
                     android:textSize="20dp"
                     android:layout_below="@+id/point1"
                     android:text=""/>
-<!--                <TextView-->
-<!--                    android:id="@+id/pointdate2"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:gravity="clip_horizontal"-->
-<!--                    android:textSize="20dp"-->
-<!--                    android:layout_below="@+id/pointdate1"-->
-<!--                    android:text=""/>-->
-<!--                <TextView-->
-<!--                    android:id="@+id/pointdate3"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:gravity="clip_horizontal"-->
-<!--                    android:textSize="20dp"-->
-<!--                    android:layout_below="@+id/pointdate2"-->
-<!--                    android:text=""/>-->
+                <TextView
+                    android:id="@+id/pointdate2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/pointdate1"
+                    android:text=""/>
+                <TextView
+                    android:id="@+id/pointdate3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/pointdate2"
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/point2"
@@ -183,28 +183,28 @@
                     android:textSize="20dp"
                     />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/pointText2"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@+id/pointText1"-->
-<!--                    android:layout_marginLeft="112dp"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_toRightOf="@+id/point1"-->
-<!--                    android:gravity="clip_horizontal"-->
-<!--                    android:textSize="20dp"-->
-<!--                    />-->
-<!--                <TextView-->
-<!--                    android:id="@+id/pointText3"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@+id/pointText2"-->
-<!--                    android:layout_marginLeft="112dp"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_toRightOf="@+id/point1"-->
-<!--                    android:gravity="clip_horizontal"-->
-<!--                    android:textSize="20dp"-->
-<!--                    />-->
+                <TextView
+                    android:id="@+id/pointText2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pointText1"
+                    android:layout_marginLeft="112dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/point1"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    />
+                <TextView
+                    android:id="@+id/pointText3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pointText2"
+                    android:layout_marginLeft="112dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/point1"
+                    android:gravity="clip_horizontal"
+                    android:textSize="20dp"
+                    />
             </RelativeLayout>
 
             <Button

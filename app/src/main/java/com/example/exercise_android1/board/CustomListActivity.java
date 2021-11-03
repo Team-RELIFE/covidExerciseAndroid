@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,14 +26,6 @@ public class CustomListActivity extends Activity {
         setContentView(R.layout.activity_custom_list);
 
         ListView listView = findViewById(R.id.lvPosts);
-//        ImageButton createPostButton = findViewById(R.id.createPostBtn);
-//        createPostButton.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent goCreatePostActivity = new Intent(getApplicationContext(),CreatePostActivity.class);
-//                startActivity(goCreatePostActivity);
-//            }
-//        }) ;
 
         populatePostsList();
 
@@ -57,6 +47,7 @@ public class CustomListActivity extends Activity {
             public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
                 Post item = (Post) listView.getItemAtPosition(a_position);
                 Intent postViewActivity = new Intent(getApplicationContext(),PostViewActivity.class);
+                System.out.println("포스트 번호");
                 postViewActivity.putExtra("id", item.getId());
                 postViewActivity.putExtra("title", item.getTitle());
                 postViewActivity.putExtra("writer", item.getWriter());
@@ -102,7 +93,6 @@ public class CustomListActivity extends Activity {
         }
 
         else {
-            System.out.println("from custom list activity : " + s);
             Toast.makeText(getApplicationContext(), "서버와의 통신에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
         }
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
     android:paddingHorizontal="5dp">
 
     <RelativeLayout
@@ -32,7 +34,7 @@
                 android:paddingVertical="1dp"
                 android:text="승인 완료"
                 android:textColor="@color/black"
-                android:textSize="12dp"></TextView>
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/statusTv0"
@@ -44,10 +46,36 @@
                 android:backgroundTint="#FFE493"
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="1dp"
-                android:text="승인 대기중"
+                android:text="승인 대기"
                 android:textColor="@color/black"
                 android:textSize="12dp"
-                android:visibility="invisible"></TextView>
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/alarmImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/statusTv0"
+                android:background="@drawable/bell"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="1dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/alarmImg"
+
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="1dp"
+                android:text="@string/pt_address"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/postTv"
@@ -124,7 +152,7 @@
                 android:layout_below="@+id/dateTv"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:text="취소"></Button>
+                android:text="취소" />
 
         </RelativeLayout>
 

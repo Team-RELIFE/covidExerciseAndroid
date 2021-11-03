@@ -19,4 +19,5 @@
     <string name="cancel_dialog">CANCEL</string>
     <string name="no_internet_connection">NO INTERNET CONNECTION, PLEASE CHECK YOUR CONNECTION</string>
     <string name="db_server">http://pt-app.kr:8080/</string>
+    <string name="pt_address"><u>참여 정보 확인</u></string>
 </resources>

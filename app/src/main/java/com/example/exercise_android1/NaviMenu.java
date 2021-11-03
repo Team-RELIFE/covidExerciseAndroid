@@ -3,6 +3,7 @@ package com.example.exercise_android1;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -10,6 +11,8 @@ import com.example.exercise_android1.Calendar.CalendarActivity;
 import com.example.exercise_android1.board.GetPostsActivity;
 import com.example.exercise_android1.graph.graph;
 import com.example.exercise_android1.mypage.PointActivity;
+import com.example.exercise_android1.pt.PtActivity;
+import com.example.exercise_android1.pt.PtActivity2;
 import com.example.exercise_android1.reservation.GetItemActivity;
 import com.nhn.android.naverlogin.OAuthLogin;
 
@@ -62,8 +65,16 @@ public class NaviMenu extends ContextWrapper{
             Intent intent = new Intent(context, GetItemActivity.class);
             startActivity(intent);
         }
+        //if (id==R.id.menu_bmi_record) {
+            //Intent intent = new Intent(context, graph.class);
+            //tartActivity(intent);
+        //}
         if (id==R.id.menu_bmi_record) {
-            Intent intent = new Intent(context, graph.class);
+            //랜덤 수 생성
+            int address = 12345;
+            String url = "https://pt-app.kr:8100/#/12345" + address;
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            Intent intent = new Intent(context, PtActivity2.class);
             startActivity(intent);
         }
     }
