@@ -75,18 +75,6 @@ public class PointActivity extends AppCompatActivity {
         }
     }
 
-    View.OnClickListener onClickListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.pointbutton:
-                    Intent intent = new Intent(PointActivity.this, PointHistoryActivity.class);
-                    startActivity(intent);
-                    break;
-            }
-        }
-    };
-
     private void ConnectServer(){
 
         //                         http://서버 ip:포트번호(tomcat 8080포트 사용)/DB연동하는 jsp파일
@@ -127,16 +115,16 @@ public class PointActivity extends AppCompatActivity {
 
                                 userid = json.getString("id");
                                 String date = json.getString("date");
-                                Double point = json.getDouble("point");
-                                Double usepoint = json.getDouble("usepoint");
-                                Double sumpoint = json.getDouble("sumpoint");
+                                String point = json.getString("point");
+                                String usepoint = json.getString("usepoint");
+                                String sumpoint = json.getString("sumpoint");
 
                                 /*StringBuilder sql = new StringBuilder();
                                 sql.append("SELECT userId ,sum(point) FROM capstone.point GROUP BY userId"); */
 
-                                pointdate1.append(""+ date);
-                                pointText1.append(""+ point);
-                                pointText2.append(""+ usepoint);
+                                pointdate1.append("" + date);
+                                pointText1.append("" + point);
+                                pointText2.append("" + usepoint);
                                 pointText3.append("" + sumpoint);
 
                             }
@@ -165,6 +153,7 @@ public class PointActivity extends AppCompatActivity {
                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                     conn.setDoInput(true); //input을 사용하도록 설정 (default : true)
                     conn.setDoOutput(true); //output을 사용하도록 설정 (default : false)
+
 
                     //strParams에 데이터를 담아 서버로 보냄
                     String strParams = "id=" + userid;
